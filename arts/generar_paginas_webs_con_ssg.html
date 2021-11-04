@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <!--DOC HEADER-->
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="referrer" content="no-referrer">
+      <title> Generar páginas web con un script en bash rápidamente</title> <!--Here goes file's title after processing-->
+
+      <link rel="stylesheet" type="text/css" href="https://luarpy.github.io/styles.css">
+    </head>
+    <body class="">
+        <nav class="menu">
+            <div class="nav-left">
+                <ul>
+                    <li>    
+                        <a href="https://luarpy.github.io">
+                            <span class="sitename">Luarpy's blog</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <ul>
+                    <li>
+                        <a href="https://luarpy.github.io/arts/contact.html">Contact</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/luarpy">Github</a>
+                    </li>
+                    <li>
+                        <button onclick="setDarkMode()" class="dark-mode-toggle">☀</button>
+                        <script type="text/javascript" src="https://luarpy.github.io/toggle.js"></script>
+                    </li>
+                
+                </ul>
+            </div>
+        </nav>
+        <noscript>This page uses a little bit of Javascript but it is not neccesary for normal usage</noscript>
+        
+<h1 id="Generar%20p%C3%A1ginas%20web%20con%20un%20script%20en%20bash%20r%C3%A1pidamente">Generar páginas web con un script en bash rápidamente</h1>
+
+<h5 id="Date%202021-11-03">Date 2021-11-03</h5>
+
+<p><img src="file:///home/mitzasi/img/2021-11-03-11-35-29-image.png" title="" alt="" data-align="center"></p>
+
+<p>Este proyecto está basado en el software de <a href="https://www.romanzolotarev.com/ssg.html">Romazo Loratev</a> y en la modificación de <a href="https://vid.puffyan.us/watch?v=N_ttw2Dihn8">Wolfgang</a>.</p>
+
+<p>En el documento  <a href="https://github.com/luarpy/ssg/blob/main/README.md">README</a> aparece explicado como utilizar este pequeño software para generar tus propios documentos HTML a partir de Markdown. Mismamente este documento esta transformado con esta técnica. Aquí más bien voy a tratar de explicar cuales han sido mis modificaciones y lo que he querido lograr.</p>
+
+<p>Primero, cuando quise generar mi propia página web, algo en lo que no me quería meter mucho era en el tiempo que me iba a hacer falta para generar los archivos en HTML línea por línea. Es un tiempo que no quiero gastar por lo que eso tenía que ser algo sencillo. Lo segundo, tampoco quería que mi página estuviera sobrecargada de código en Javascript que saturase todo, que hiciera cargar todo más lento o que añadiera dependencia con librerías externas, etc. Quería algo simple, además mucha gente mantiene el Javascript desactivado o bloqueado por razones de seguridad y privacidad, a las cuales me subscribo y respeto. Por lo que, el código que tuviese esta página debía ser mínimo y realmente no necesario para la lectura de este y otros artículos. Por lo que en resumen, necesitaba algo que me generase rapidamente estos artículos en HTML, sin gastar tiempo en el formato del documento y que además fuese ligero para los buscadores de Internet. Así que finalmente opté por elegir este generador estático de páginas. El formato en Markdown además es muy sencillo por lo que no molesta usarlo.</p>
+
+<p>De las cosas que le añadí al código son tres funciones sobretodo las relevantes. Las dos primeras son para añadir las líneas que querría en el documento para hacer referencia a los archivos de estilos CSS y otra para una breve función en Javascript de alternar el modo oscuro-claro de la página. Para ello es que no me iba a complicar más que poder generar las rutas relativas hasta el directorio troncal de la página. Sería algo así:</p>
+
+<pre><code class="language-bash">└── dst&#47;
+    ├── arts&#47;
+    │   └── generar_paginas_webs_con_ssg.html #&#60;- &#39;..&#47;style.css&#39;
+    ├── doc&#47;
+    ├── img&#47;
+    ├── index.html #&#60;- &#39;style.css&#39;
+    ├── style.css
+    └── toggle.js
+
+</code></pre>
+
+<p>Lo mismo sería para el caso del <code>toggle.css</code>. Así estas dos líneas en formato HTML tenían que ser añadidas en las posiciones correctas del archivo para que funcionase todo lo relativo al estilo y funciones.  </p>
+
+<p>Luego también quise añadir un botón de volver a la página principal, así que al final esto había que añadirlo en cada página haciendo señalar hacia el nombre del dominio de la página para que cayese en el <code>index.html</code> que es el archivo principal de todo cuando se carga una página web. Así, más o menos se solucionan estas dos cosas. </p>
+
+<p>Y ya para terminar de rizar el rizo, cambié la función de <code>render_md_to_htm()</code>  internamente porque la escritura de acciones en el comando <code>awk</code> todavía no la controlo. Me pareció demasiado complicado así que la mejoré, para mí, haciéndola con  varios comandos de <code>sed, grep, echo</code>, etc. que me interesaban. A mí me parecen que mejoran la manera de en que se leé qué hace la función. Y también cambié la función que genera la lista de artículos, porque esta se podía mejorar y ya decía <em>NotTheBee</em> en su vídeo que no era el mejor programador en scripting de <code>bash</code> que había (yo tampoco) . </p>
+
+<p><strong>Sí que quiero añadir</strong> que todo ésto me ha llevado a hacer algunas funciones más, pero con lo aprendido en <code>bash</code>me ha merecido la pena la verdad. Hay un archivo <code>src&#47;.config</code> que hay que rellenar si se quiere utilizar todo lo interno que añadí al script de cara a la personalización. Sino caerá a valores por defecto que rescata de las opciones mínimas que necesita para funcionar. También me ha hecho falta tener que depender de más comandos como sería <code>pup</code>que es un parseador de HTML que facilita rescatar entre tags de formato HTML su contenido, pero creo que merece la pena usarlo porque facilita las cosas y se encuentra en la mayoría de distribuciones de GNU&#47;Linux.</p>
+<p class="main-page"><a class="back" href="https://luarpy.github.io">Main page</a></p>
+    </body>
+    <footer>
+        <p>Licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a><br>
+	Created with a <a href="https://github.com/luarpy/ssg">slightly modified</a> version of <a href="https://www.romanzolotarev.com/ssg.html">ssg</a> by Roman Zolotarev</p>
+    </footer>
+    <!--DOC FOOTER-->
+</html>
