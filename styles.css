@@ -314,6 +314,10 @@ ul.articles a {
     border: none;
 }
 
+ul.articles a:hover {
+    color: var(--link_h);
+}
+
 .date{
     font-size: 13px;
     color: var(--dark_grey);
