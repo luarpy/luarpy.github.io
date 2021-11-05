@@ -209,6 +209,7 @@ thead, tfoot {
 .logo{
     list-style: none;
     max-height: 40px;
+    border-radius: 60px;
 }
 
 @media screen and (max-width: 360px) {
@@ -292,11 +293,7 @@ nav > div > ul > li > a:hover {
 .nav-right ul li {
 	float: right;
 }
-.logo {
-	margin-right: 0.5em;
-    border-radius: 60px;
-    max-height: 60px;
-}
+
 
 footer {
 	font-size: 13px;
