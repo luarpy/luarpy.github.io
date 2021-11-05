@@ -6,7 +6,7 @@
     --link_h: #06e;
     --bg_grey: #eee;
     --dark_grey: #999;
-    --highlight: rgb(201, 81, 72);
+    --highligth: #999;
 }
 
 * {
@@ -26,8 +26,8 @@ html {
 body {
     font-family: Arial, Helvetica Neue, sans-serif;
     line-height: 1.5;
-    background-color: var(--fg);
-    color: var(--bg);
+    background-color: var(--bg);
+    color: var(--fg);
     max-width: 700px;
     margin: auto;
 }
@@ -171,7 +171,7 @@ thead, tfoot {
     color: var(--bg);
 }
 
-.dark-mode-toggle {
+.dark-mode-toggle-button {
     border: none;
     padding: 15px 32px;
     text-align: center;
@@ -183,8 +183,8 @@ thead, tfoot {
     outline: none;
     font-size: 2rem;
     background: transparent;
-    color: var(--bg);
-    background-color: var(--fg);
+    color: inherit;
+    background-color: transparent;
 }
 
 .main-page {
@@ -262,14 +262,18 @@ nav > div > ul > li > a {
 	line-height: 2em;
 	padding: 0.5em 0em;
 	text-decoration: none;
+    border: none;
+	color: inherit !important;
 }
 
 nav > div.nav-right > ul > li > a {
 	padding: 0.5em 0.5em;
+    color: inherit;
+    border: none;
 }
 
 nav > div > ul > li > a:hover {
-	color: var(--bg) !important;
+	color: var(--dark_grey) !important;
 }
 .nav-left {
 	float: left;
@@ -290,19 +294,28 @@ footer {
 	font-size: 13px;
 }
 
-#Articles {
-	margin-top: 2em;
-}
-
-ul.articles {
+ul.articles{
     list-style: none;
     color: var(--link);
     padding: 0;
+    margin: 0;
+}
+
+ul.articles li{
+    margin: 0;
+}
+
+ul.articles a {
+    border: none;
 }
 
 .date{
     font-size: 13px;
     color: var(--dark_grey);
-    margin-top: 1rem;
-    margin-bottom: 2rem;
+    margin-top: auto;
+}
+
+footer a{
+    border: none;
+    color: var(--link);
 }
