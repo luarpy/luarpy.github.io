@@ -48,29 +48,179 @@
 
 <p>Este proyecto está basado en el software de <a href="https://www.romanzolotarev.com/ssg.html">Romazo Loratev</a> y en la modificación de <a href="https://vid.puffyan.us/watch?v=N_ttw2Dihn8">Wolfgang</a>.</p>
 
-<p>En el documento  <a href="https://github.com/luarpy/ssg/blob/main/README.md">README</a> aparece explicado como utilizar este pequeño software para generar tus propios documentos HTML a partir de Markdown. Mismamente este documento esta transformado con esta técnica. Aquí más bien voy a tratar de explicar cuales han sido mis modificaciones y lo que he querido lograr.</p>
+<p>En el documento  <a href="https://github.com/luarpy/ssg/blob/main/README.md">README</a> aparece explicado como utilizar este pequeño software para generar tus propios documentos HTML a partir de Markdown. Mismamente este documento esta transformado con esta técnica.</p>
 
-<p>Primero, cuando quise generar mi propia página web, algo en lo que no me quería meter mucho era en el tiempo que me iba a hacer falta para generar los archivos en HTML línea por línea. Es un tiempo que no quiero gastar por lo que eso tenía que ser algo sencillo. Lo segundo, tampoco quería que mi página estuviera sobrecargada de código en Javascript que saturase todo, que hiciera cargar todo más lento o que añadiera dependencia con librerías externas, etc. Quería algo simple, además mucha gente mantiene el Javascript desactivado o bloqueado por razones de seguridad y privacidad, a las cuales me subscribo y respeto. Por lo que, el código que tuviese esta página debía ser mínimo y realmente no necesario para la lectura de este y otros artículos. Por lo que en resumen, necesitaba algo que me generase rapidamente estos artículos en HTML, sin gastar tiempo en el formato del documento y que además fuese ligero para los buscadores de Internet. Así que finalmente opté por elegir este generador estático de páginas. El formato en Markdown además es muy sencillo por lo que no molesta usarlo.</p>
+<p>Lo que aquí me gustaría mostrar es como he hecho la personalización para mi caso particular de generar esta web.</p>
 
-<p>De las cosas que le añadí al código son tres funciones sobretodo las relevantes. Las dos primeras son para añadir las líneas que querría en el documento para hacer referencia a los archivos de estilos CSS y otra para una breve función en Javascript de alternar el modo oscuro-claro de la página. Para ello es que no me iba a complicar más que poder generar las rutas relativas hasta el directorio troncal de la página. Sería algo así:</p>
+<h2 id="C%C3%B3mo%20personalizar%20tus%20propia%20web%20con%20ssg">Cómo personalizar tus propia web con ssg</h2>
 
-<pre><code class="language-bash">└── dst&#47;
-    ├── arts&#47;
-    │   └── generar_paginas_webs_con_ssg.html #&#60;- &#39;..&#47;style.css&#39;
-    ├── doc&#47;
-    ├── img&#47;
-    ├── index.html #&#60;- &#39;style.css&#39;
-    ├── style.css
-    └── toggle.js
+<p>Primero personalicé mis propios segmentos de documento HTML para crear la cabecera y cola del documento final. Pongamos el ejemplo de un documento HTML básico para ir entendiendo:</p>
+
+<pre><code class="language-html">&#60;html&#62;
+    &#60;head&#62;
+        &#60;!--Aqui suelen colocarse los enlaces a páginas que
+        dan estilo o aplican un tema al documento final--&#62;
+    &#60;&#47;head&#62;
+    &#60;body&#62;
+        &#60;!--Aquí suele ir el contenido del articulo--&#62;
+    &#60;&#47;body&#62;
+    &#60;footer&#62;
+        &#60;!--Aquí va el pie de página, raras veces aparece--&#62;
+    &#60;&#47;footer&#62;
+&#60;&#47;html&#62;
 </code></pre>
 
-<p>Lo mismo sería para el caso del <code>toggle.css</code>. Así estas dos líneas en formato HTML tenían que ser añadidas en las posiciones correctas del archivo para que funcionase todo lo relativo al estilo y funciones.  </p>
+<p>De este ejemplo sencillo de un HTML, el funcionamiento consiste en cortar por la mitad del cuerpo del documento (<code>body</code>) para insertar la conversión que se hace de Markdown a HTML. Por lo tanto aquí ya se puede personalizar cada uno la parte superior e inferior a su gusto. Veamos mis ejemplos:</p>
 
-<p>Luego también quise añadir un botón de volver a la página principal, así que al final esto había que añadirlo en cada página haciendo señalar hacia el nombre del dominio de la página para que cayese en el <code>index.html</code> que es el archivo principal de todo cuando se carga una página web. Así, más o menos se solucionan estas dos cosas. </p>
+<pre><code class="language-html">&#60;!DOCTYPE html&#62;
+&#60;html&#62;
+    &#60;!--DOC HEADER--&#62;
+    &#60;head&#62;
+      &#60;title&#62;&#60;&#47;title&#62; &#60;!--Here goes file&#39;s title after processing--&#62;
+      &#60;link rel="stylesheet" type="text&#47;css" href="https:&#47;&#47;luarpy.github.io&#47;styles.css"&#62;
+    &#60;&#47;head&#62;
+    &#60;!--DOC BODY--&#62;
+    &#60;body class=""&#62;
+        &#60;!--NAVIGATION BAR--&#62;
+        &#60;nav class="menu"&#62;
+            &#60;div class="nav-left"&#62;
+                &#60;ul&#62;
+                    &#60;li&#62;    
+                        &#60;a href="https:&#47;&#47;luarpy.github.io&#47;index.html"&#62;
+                            &#60;img class="logo" src="https:&#47;&#47;luarpy.github.io&#47;favicon.jpg" &#62;
+                            &#60;span class="sitename"&#62;Luarpy&#39;s blog&#60;&#47;span&#62;
+                        &#60;&#47;a&#62;
+                    &#60;&#47;li&#62;
+                &#60;&#47;ul&#62;
+            &#60;&#47;div&#62;
+            &#60;div class="nav-right"&#62;
+                &#60;ul&#62;
+                    &#60;li&#62;
+                        &#60;a href="https:&#47;&#47;luarpy.github.io&#47;arts&#47;contact.html"&#62;Contact&#60;&#47;a&#62;
+                    &#60;&#47;li&#62;
+                    &#60;li&#62;
+                        &#60;a href="https:&#47;&#47;github.com&#47;luarpy"&#62;Git&#60;&#47;a&#62;
+                    &#60;&#47;li&#62;
+                    &#60;li&#62;
+                        &#60;button onclick="setDarkMode()" class="dark-mode-toggle-button"&#62;☀&#60;&#47;button&#62;
+                        &#60;script type="text&#47;Javascript" src="https:&#47;&#47;luarpy.github.io&#47;toggle.js"&#62;&#60;&#47;script&#62;
+                    &#60;&#47;li&#62;
 
-<p>Y ya para terminar de rizar el rizo, cambié la función de <code>render_md_to_htm()</code>  internamente porque la escritura de acciones en el comando <code>awk</code> todavía no la controlo. Me pareció demasiado complicado así que la mejoré, para mí, haciéndola con  varios comandos de <code>sed, grep, echo</code>, etc. que me interesaban. A mí me parecen que mejoran la manera de en que se leé qué hace la función. Y también cambié la función que genera la lista de artículos, porque esta se podía mejorar y ya decía <em>NotTheBee</em> en su vídeo que no era el mejor programador en scripting de <code>bash</code> que había (yo tampoco) . </p>
+                &#60;&#47;ul&#62;
+            &#60;&#47;div&#62;
+        &#60;&#47;nav&#62;
+        &#60;noscript&#62;This page uses a little bit of Javascript but it is not neccesary for normal usage&#60;&#47;noscript&#62;
+</code></pre>
 
-<p><strong>Sí que quiero añadir</strong> que todo ésto me ha llevado a hacer algunas funciones más, pero con lo aprendido en <code>bash</code>me ha merecido la pena la verdad. Hay un archivo <code>src&#47;.config</code> que hay que rellenar si se quiere utilizar todo lo interno que añadí al script de cara a la personalización. Sino caerá a valores por defecto que rescata de las opciones mínimas que necesita para funcionar. También me ha hecho falta tener que depender de más comandos como sería <code>pup</code>que es un parseador de HTML que facilita rescatar entre tags de formato HTML su contenido, pero creo que merece la pena usarlo porque facilita las cosas y se encuentra en la mayoría de distribuciones de GNU&#47;Linux.</p>
+<pre><code class="language-html">    &#60;&#47;body&#62;
+    &#60;!--DOC FOOTER--&#62;
+    &#60;footer&#62;
+        &#60;p&#62;Licensed under &#60;a href="https:&#47;&#47;creativecommons.org&#47;licenses&#47;by-nc&#47;4.0&#47;"&#62;CC BY-NC 4.0&#60;&#47;a&#62;&#60;br&#62;
+    Created with a &#60;a href="https:&#47;&#47;github.com&#47;luarpy&#47;ssg"&#62;slightly modified&#60;&#47;a&#62; version of &#60;a href="https:&#47;&#47;www.romanzolotarev.com&#47;ssg.html"&#62;ssg&#60;&#47;a&#62; by Roman Zolotarev&#60;&#47;p&#62;
+    &#60;&#47;footer&#62;
+&#60;&#47;html&#62;
+</code></pre>
+
+<p>No me voy a estirar viendo su contenido, pero para que se vea sencillo, en cada parte se puede ver como los tags de <code>&#60;body&#62;</code> y <code>&#60;&#47;body&#62;</code> han sido separados para poder encajarse en el resultado final de la siguiente manera:</p>
+
+<pre><code class="language-markdown">&#60;!--Esto es un ejemplo de formato markowd--&#62;
+# Esto es un ejemplo de prueba
+Esto es texto de un ejemplo de prueba
+</code></pre>
+
+<p>Su salida del programa será la siguiente:</p>
+
+<pre><code class="language-html">&#60;!DOCTYPE html&#62;
+&#60;html&#62;
+    &#60;!--DOC HEADER--&#62;
+    &#60;head&#62;
+      &#60;title&#62;&#60;&#47;title&#62; &#60;!--Here goes file&#39;s title after processing--
+      &#60;link rel="stylesheet" type="text&#47;css" href="https:&#47;&#47;luarpy.github.io&#47;styles.css"&#62;
+    &#60;&#47;head&#62;
+    &#60;!--DOC BODY--&#62;
+    &#60;body class=""&#62;
+        &#60;!--NAVIGATION BAR--&#62;
+        &#60;nav class="menu"&#62;
+            &#60;div class="nav-left"&#62;
+                &#60;ul&#62;
+                    &#60;li&#62;    
+                        &#60;a href="https:&#47;&#47;luarpy.github.io&#47;index.html"&#62;
+                            &#60;img class="logo" src="https:&#47;&#47;luarpy.github.io&#47;favicon.jpg" &#62;
+                            &#60;span class="sitename"&#62;Luarpy&#39;s blog&#60;&#47;span&#62;
+                        &#60;&#47;a&#62;
+                    &#60;&#47;li&#62;
+                &#60;&#47;ul&#62;
+            &#60;&#47;div&#62;
+            &#60;div class="nav-right"&#62;
+                &#60;ul&#62;
+                    &#60;li&#62;
+                        &#60;a href="https:&#47;&#47;luarpy.github.io&#47;arts&#47;contact.html"&#62;Contact&#60;&#47;a&#62;
+                    &#60;&#47;li&#62;
+                    &#60;li&#62;
+                        &#60;a href="https:&#47;&#47;github.com&#47;luarpy"&#62;Git&#60;&#47;a&#62;
+                    &#60;&#47;li&#62;
+                    &#60;li&#62;
+                        &#60;button onclick="setDarkMode()" class="dark-mode-toggle-button"&#62;☀&#60;&#47;button&#62;
+                        &#60;script type="text&#47;Javascript" src="https:&#47;&#47;luarpy.github.io&#47;toggle.js"&#62;&#60;&#47;script&#62;
+                    &#60;&#47;li&#62;
+
+                &#60;&#47;ul&#62;
+            &#60;&#47;div&#62;
+        &#60;&#47;nav&#62;
+        &#60;noscript&#62;This page uses a little bit of Javascript but it is not neccesary for normal usage&#60;&#47;noscript&#62;
+        &#60;h1&#62;Esto es un ejemplo de prueba&#60;&#47;h1&#62;
+        &#60;p&#62;Esto es texto de un ejemplo de prueba&#60;&#47;p&#62;
+    &#60;&#47;body&#62;
+    &#60;!--DOC FOOTER--&#62;
+    &#60;footer&#62;
+        &#60;p&#62;Licensed under &#60;a href="https:&#47;&#47;creativecommons.org&#47;licenses&#47;by-nc&#47;4.0&#47;"&#62;CC BY-NC 4.0&#60;&#47;a&#62;&#60;br&#62;
+    Created with a &#60;a href="https:&#47;&#47;github.com&#47;luarpy&#47;ssg"&#62;slightly modified&#60;&#47;a&#62; version of &#60;a href="https:&#47;&#47;www.romanzolotarev.com&#47;ssg.html"&#62;ssg&#60;&#47;a&#62; by Roman Zolotarev&#60;&#47;p&#62;
+    &#60;&#47;footer&#62;
+&#60;&#47;html&#62;
+</code></pre>
+
+<p>El procesado de un formato a otro es muy sencillo, por lo que solo hace falta redactar los documentos en formato Markdown y editar las partes del documento de la cabecera que se quieran utilizar.</p>
+
+<h2 id="Cambios%20que%20contiene%20mi%20ssg">Cambios que contiene mi ssg</h2>
+
+<p>En mi versión basada en la de Woflgang, cambié algunas partes del código que me facilitaban unas tareas o me quitaban otras. </p>
+
+<p>La primera y más sencilla, es hacer que añada una línea informativa para cuando el buscador tiene el Javascript desactivado. La segunda, un simple botón que se añade en la base del archivo sobre el tag <code>&#60;&#47;body&#62;</code> de éste. La tercera, una sencilla sustitución de la palabra clave <code>https://luarpy.github.io</code> por la del dominio que se desee.</p>
+
+<p>Estos cambios o sustituciones se hacen si se activan los flags de configuración que están en el archivo <code>src&#47;.config</code>. Las variables que se encuentran ahí se cargan al principio de la ejecución y sobrescriben los valores por defecto. que contienen.</p>
+
+<p>Este es un ejemplo de unas variables que funcionan en el programa:</p>
+
+<pre><code class="language-bash">STYLESHEET="style.css" # Documento como estilo
+SCRIPT="toggle.js" # Documento con las funciones de Javascript
+NOSCRIPT="Yes" # Activa el añadir la línea de noscrip
+BUTTON_TEXT="Inicio" # Es el texto que se añade al botón que lleva a la página principal
+https://luarpy.github.io="https:&#47;&#47;example.com" # URL del dominio
+</code></pre>
+
+<p>También le he añadido una función que incrusta un botón al final de cada página, menos la principal, que lleva a la página principal de la web. Así es más fácil moverse de un lado a otro.</p>
+
+<h3 id="Configuraci%C3%B3n">Configuración</h3>
+
+<p>Todos los documentos a los que se haga referencia deben tener la ruta relativa respecto la de origen, que es la <code>src&#47;</code>. Luego estos serán copiados al destino o carpeta de salida <code>dst&#47;</code>.  </p>
+
+<ul>
+<li><p><strong>STYLESHEET</strong>: añade una línea en cada documento HTML que hace referencencia al  archivo que señale. Si no es un URL o enlace a otra plataforma, la línea que se genera hace referencia hacia el documento en la ruta relativa que los une. Es algo de ver, con un ejemplo más fácil:</p>
+
+<pre><code class="language-bash">└── dst&#47;
+├── arts&#47;
+│ └── generar_paginas_webs_con_ssg.html #&#60;- &#39;..&#47;style.css&#39;
+├── doc&#47;
+├── img&#47;
+├── index.html #&#60;- &#39;style.css&#39;
+├── style.css
+└── toggle.js
+</code></pre></li>
+<li><p><strong>SCRIPT</strong>: añade una línea en cada documento HTML que hace referencencia al archivo que señale.</p></li>
+<li><p><strong>NOSCRIPT</strong>: añade una línea en la que aparece el mensaje que se activa al ver que el Javascript está desactivado.</p></li>
+<li><p><strong>BUTTON_TEXT</strong>: cambia el texto del botón que se añade a cada página al final de esta. Por defecto utiliza &#8220;Main page&#8221;  como opción.</p></li>
+<li><p><strong>https://luarpy.github.io</strong>: si se ha añadido, sustituye el nombre que se ha añadido al ejecutar el script como 4º argumento de entrada. </p></li>
+</ul>
 <p class="main-page"><a class="back" href="https://luarpy.github.io">Main page</a></p>
     </body>
     <footer>
