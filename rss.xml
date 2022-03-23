@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<atom:link href="https://https://luarpy.github.io/rss.xml" rel="self" type="application/rss+xml" />
+<title>Luarpy's blog</title>
+<description></description>
+<link>https://https://luarpy.github.io/</link>
+<lastBuildDate></lastBuildDate>
+
+<item>
+<guid>https://https://luarpy.github.io/arts/creando_server_de_portatil_I.html</guid>
+<link>https://https://luarpy.github.io/arts/creando_server_de_portatil_I.html</link>
+<pubDate></pubDate>
+<title>Creando un servidor a partir de un viejo portátil I: diseño previo y hardware</title>
+<description><![CDATA[
+
+<h1 id="creando-un-servidor-a-partir-de-un-viejo-porttil-i-diseo-previo-y-hardware">Creando un servidor a partir de un viejo portátil I: diseño previo y hardware</h1>
+
+<p><span class="date">2022-01-03</span></p>
+
+<h2 id="introduccin">Introducción</h2>
+
+<p>Esta es la primera entrada para un proyecto personal en el que estoy trabajando. Se trata de un regalo para un amigo al cual espero que le guste.</p>
+
+<h2 id="requerimientos">Requerimientos</h2>
+
+<ul>
+<li>Un portátil que no se utilice</li>
+<li>Conocimiento del entorno de software GNU&#47;Linux (no hace falta profundizar)</li>
+<li>Madera</li>
+<li>Acceso a una impresora 3D</li>
+<li>Habilidad para diseñar</li>
+</ul>
+
+<h2 id="por-qu-utilizar-un-porttil-para-un-servidor">Por qué utilizar un portátil para un servidor</h2>
+
+<p>El mundo de la electrónica sufre constantemente el cambio y renovación de la tecnología, de un año para otro ya se ha dado en la renovación de la tecnología de vanguardia. Añadido a ello, el modelo comercial y de mercado que se tiene, se genera una gran cantidad de basura electrónica o <em>e-waste</em> que se retira del mercado; a pesar de ser todavía es válida para el cometido que tiene. Empujado por este desbordamiento de tecnología, la propiedad sobre tecnología que se queda atrasada respecto de la innovación acaba siendo mayormente desechada.</p>
+
+<p>Un claro ejemplo son los portátiles que se tratan de computadoras capaces de realizar tareas a menor escala como un servidor profesional; poseen el hardware semejante a los servidores, pero en menor escala y capacidad. Pese a su <strong>menor escala</strong>, <strong>rendimiento</strong> y  <strong>eficiencia</strong>, siguen siendo una alternativa para poder tener <strong>pequeños servicios auto-alojados en los hogares</strong>. Pero como no hace falta dar servicio a un gran número de personas -sino a una familia o grupo de amigos- es una alternativa viable. Además añade una independencia digital a muchas de las plataformas actuales, que ofrecen servicios que pueden poseerse sin coste alguno (excepto el energético), por lo que realmente son interesantes para las consecuencias de poseer una vida privada y segura digitalmente.</p>
+
+<h2 id="por-dnde-empezar">Por dónde empezar</h2>
+
+<h3 id="con-qu-hardware-quedarse">Con qué hardware quedarse</h3>
+
+<p>Una vez obtenido un portátil -puede ser viejo o relativamente nuevo porque puede tener alguna de las partes inutilizadas o rotas que imposibilitasen su uso- hay que elegir cuales son las partes que van a usarse. Todos ellos hoy en día vienen con los elementos comunes: pantalla, teclado, <em>touchpad</em>, disco duro o almacenamiento de algún tipo, memoria de acceso rápido (RAM), procesador (CPU) y en ciertos casos una gráfica integrada (iGPU) o gráfica externa (eGPU). Añadido a esto, es mejor tener el cargador oficial por tema de compatibilidad y facilitar la tarea de crear este servidor. La batería no sería realmente necesaria ya que el nuevo servidor se mantendría constantemente conectado a la red eléctrica y en cambio la batería podría darle solo cuando se ha quedado sin alimentación.</p>
+
+<p>De estas partes, en el portátil que obtuve, la pantalla solo funcionaba en los canales azul y verde de la pantalla, por lo que era molesto mantenerla, además un servidor realmente no necesita tener una pantalla puesto que este funcionará en modo <em>headless</em> (sin interfaz gráfica).  No tenía la batería, así que es algo que puede quedarse fuera del diseño final. El teclado y <em>touchpad</em> no son interesantes para un elemento que va a quedarse aislado de cualquier manipulación diaria, así que pueden apartarse. A veces se tienen disqueteras añadidas en el chasis y estos tienen un punto interesante, la bahía en las que se conectan es normalmente miniSATA así que con un adaptador de SATA a miniSATA se puede añadir más almacenamiento en caso de querer expandir la memoria. El disco duro que viene por defecto puede ser cambiado, aunque depende del modelo y capacidad de este. Para algo sencillo como esto puede mantenerse el disco duro mecánico o digital que tenía. La capacidad de la RAM puede ser baja (2GB) por lo que subirla a 4GB sería interesante en caso de añadir varios servicios; de 8GB y más podría ser excesivo y en un servidor pequeño como este, limitado por el procesador que no va a tener mucha potencia no hace falta sobrealimentarlo. Finalmente la CPU y i&#47;eGPU son dos partes que van soldadas a la placa madre del portátil, por lo que no pueden modificarse. Otros elementos como las antenas WiFi, módulos bluetooth u otras conexiones son importantes guardarlas. A la hora de desconectar estos <strong>mejor hacer unas fotos de como estaban conectadas</strong> para cuando haya que volver a montarlas. </p>
+
+<p>En cuanto a los puertos, entradas y salidas de elementos conectables las opciones mínimas son que tenga <strong>acceso para cable de Internet</strong>, algunos <strong>puertos USB</strong> y <strong>salida a algún puerto de vídeo</strong> e imagen como <em>HDMI</em> o <em>DisplayPort</em>. En este proyecto se va a atratar de hacer una máquina que provea de servicios a otros clientes, pero puede darse al revés y crear un cliente que se conecte a servicios de streaming de vídeo (Netflix, Jellyfin, etc.) o máquinas de emulación de videojuegos. Las salidas de vídeo son útiles si se quiere crear un cliente de servicios de streaming como <a href="https://kodi.tv/">Kodi</a> o una emuladora de videojuegos, como <a href="https://dolphin-emu.org/">Dolphin</a> que conectándole mandos para jugar a los puertos o a través de la conexión bluetooth del portátil. </p>
+
+<p>Es importante guardar el <strong>segmento de cable</strong> y <strong>botones de encendido</strong>. Estos suelen ir conectados directamente a una parte de de la placa madre y son necesarios para arrancar la computadora. De cara a evitar problemas, se recomienda hacer unas fotos y guardarlas de cómo van conectadas estar partes.</p>
+
+<h3 id="dnde-meterlo">Dónde meterlo</h3>
+
+<p>La carcasa de los portátiles una vez vaciada del contenido, puede ser más grande que la placa madre que contiene lo que queremos mantener, por lo que pensar en una alternativa para contenerlo más reducida es mejor. Entre los medios más asequibles yo he pensado en simplificar el diseño a una caja de madera rectangular, la cual es fácil de manipular para hacer los agujeros que se quieran e instalar apoyos con métodos sencillos; además la impresión 3D amplía el espectro posible para diseñar lo que se quiera si se tiene acceso a ella si se tiene acceso a ella, sino del mismo modo con apoyos de madera o <a href="https://https://luarpy.github.io/">separadores de metal</a> puede valer igualmente. </p>
+
+<p>En este caso, elegí la caja de madera de dimensiones parecidas a la placa madre para evitar tener una caja grande. Queda más compacto y para mi gusto prefiero algo pequeño y disimulado que algo grande y llamativo. Los soportes sobre los que se apoya el hardware que mantengo están diseñados para ser impresos en 3D. Es decir, los soportes para separar la placa madre de las paredes de la caja, espacios para apoyar el disco duro y algunos otros componentes, los he diseñado en 3D e impreso sobre filamento tipo PLA.</p>
+
+<p>Seguiremos con este trabajo</p>
+
+]]></description>
+</item>
+
+<item>
+<guid>https://https://luarpy.github.io/arts/generar_paginas_webs_con_ssg.html</guid>
+<link>https://https://luarpy.github.io/arts/generar_paginas_webs_con_ssg.html</link>
+<pubDate></pubDate>
+<title>Generar páginas web con un script en bash rápidamente</title>
+<description><![CDATA[
+
+<h1 id="generar-pginas-web-con-un-script-en-bash-rpidamente">Generar páginas web con un script en bash rápidamente</h1>
+
+<p><span class="date">2021-11-03</span></p>
+
+<p><img title="" src="https://luarpy.github.io/img/terminal capture.png" alt="" data-align="center"></p>
+
+<p>Este proyecto está basado en el software de <a href="https://www.romanzolotarev.com/ssg.html">Romazo Loratev</a> y en la modificación de <a href="https://vid.puffyan.us/watch?v=N_ttw2Dihn8">Wolfgang</a>.</p>
+
+<p>En el documento  <a href="https://github.com/luarpy/ssg/blob/main/README.md">README</a> aparece explicado como utilizar este pequeño software para generar tus propios documentos HTML a partir de Markdown. Mismamente este documento esta transformado con esta técnica.</p>
+
+<p>Lo que aquí me gustaría mostrar es como he hecho la personalización para mi caso particular de generar esta web.</p>
+
+<h2 id="cmo-personalizar-tus-propia-web-con-ssg">Cómo personalizar tus propia web con ssg</h2>
+
+<p>Primero personalicé mis propios segmentos de documento HTML para crear la cabecera y cola del documento final. Pongamos el ejemplo de un documento HTML básico para ir entendiendo:</p>
+
+<pre><code class="language-html">&#60;html&#62;
+    &#60;head&#62;
+        &#60;!--Aqui suelen colocarse los enlaces a páginas que
+        dan estilo o aplican un tema al documento final--&#62;
+    &#60;&#47;head&#62;
+    &#60;body&#62;
+        &#60;!--Aquí suele ir el contenido del articulo--&#62;
+    &#60;&#47;body&#62;
+    &#60;footer&#62;
+        &#60;!--Aquí va el pie de página, raras veces aparece--&#62;
+    &#60;&#47;footer&#62;
+&#60;&#47;html&#62;
+</code></pre>
+
+<p>De este ejemplo sencillo de un HTML, el funcionamiento consiste en cortar por la mitad del cuerpo del documento (<code>body</code>) para insertar la conversión que se hace de Markdown a HTML. Por lo tanto aquí ya se puede personalizar cada uno la parte superior e inferior a su gusto. Veamos mis ejemplos:</p>
+
+<pre><code class="language-html">&#60;!DOCTYPE html&#62;
+&#60;html&#62;
+    &#60;!--DOC HEADER--&#62;
+    &#60;head&#62;
+      &#60;title&#62;&#60;&#47;title&#62; &#60;!--Here goes file&#39;s title after processing--&#62;
+      &#60;link rel="stylesheet" type="text&#47;css" href="https:&#47;&#47;luarpy.github.io&#47;styles.css"&#62;
+    &#60;&#47;head&#62;
+    &#60;!--DOC BODY--&#62;
+    &#60;body class=""&#62;
+        &#60;!--NAVIGATION BAR--&#62;
+        &#60;nav class="menu"&#62;
+            &#60;div class="nav-left"&#62;
+                &#60;ul&#62;
+                    &#60;li&#62;    
+                        &#60;a href="https:&#47;&#47;luarpy.github.io&#47;index.html"&#62;
+                            &#60;img class="logo" src="https:&#47;&#47;luarpy.github.io&#47;favicon.jpg" &#62;
+                            &#60;span class="sitename"&#62;Luarpy&#39;s blog&#60;&#47;span&#62;
+                        &#60;&#47;a&#62;
+                    &#60;&#47;li&#62;
+                &#60;&#47;ul&#62;
+            &#60;&#47;div&#62;
+            &#60;div class="nav-right"&#62;
+                &#60;ul&#62;
+                    &#60;li&#62;
+                        &#60;a href="https:&#47;&#47;luarpy.github.io&#47;arts&#47;contact.html"&#62;Contact&#60;&#47;a&#62;
+                    &#60;&#47;li&#62;
+                    &#60;li&#62;
+                        &#60;a href="https:&#47;&#47;github.com&#47;luarpy"&#62;Git&#60;&#47;a&#62;
+                    &#60;&#47;li&#62;
+                    &#60;li&#62;
+                        &#60;button onclick="setDarkMode()" class="dark-mode-toggle-button"&#62;☀&#60;&#47;button&#62;
+                        &#60;script type="text&#47;Javascript" src="https:&#47;&#47;luarpy.github.io&#47;toggle.js"&#62;&#60;&#47;script&#62;
+                    &#60;&#47;li&#62;
+
+                &#60;&#47;ul&#62;
+            &#60;&#47;div&#62;
+        &#60;&#47;nav&#62;
+        &#60;noscript&#62;This page uses a little bit of Javascript but it is not neccesary for normal usage&#60;&#47;noscript&#62;
+</code></pre>
+
+<pre><code class="language-html">    &#60;&#47;body&#62;
+    &#60;!--DOC FOOTER--&#62;
+    &#60;footer&#62;
+        &#60;p&#62;Licensed under &#60;a href="https:&#47;&#47;creativecommons.org&#47;licenses&#47;by-nc&#47;4.0&#47;"&#62;CC BY-NC 4.0&#60;&#47;a&#62;&#60;br&#62;
+    Created with a &#60;a href="https:&#47;&#47;github.com&#47;luarpy&#47;ssg"&#62;slightly modified&#60;&#47;a&#62; version of &#60;a href="https:&#47;&#47;www.romanzolotarev.com&#47;ssg.html"&#62;ssg&#60;&#47;a&#62; by Roman Zolotarev&#60;&#47;p&#62;
+    &#60;&#47;footer&#62;
+&#60;&#47;html&#62;
+</code></pre>
+
+<p>No me voy a estirar viendo su contenido, pero para que se vea sencillo, en cada parte se puede ver como los tags de <code>&#60;body&#62;</code> y <code>&#60;&#47;body&#62;</code> han sido separados para poder encajarse en el resultado final de la siguiente manera:</p>
+
+<pre><code class="language-markdown">&#60;!--Esto es un ejemplo de formato markowd--&#62;
+# Esto es un ejemplo de prueba
+Esto es texto de un ejemplo de prueba
+</code></pre>
+
+<p>Su salida del programa será la siguiente:</p>
+
+<pre><code class="language-html">&#60;!DOCTYPE html&#62;
+&#60;html&#62;
+    &#60;!--DOC HEADER--&#62;
+    &#60;head&#62;
+      &#60;title&#62;&#60;&#47;title&#62; &#60;!--Here goes file&#39;s title after processing--
+      &#60;link rel="stylesheet" type="text&#47;css" href="https:&#47;&#47;luarpy.github.io&#47;styles.css"&#62;
+    &#60;&#47;head&#62;
+    &#60;!--DOC BODY--&#62;
+    &#60;body class=""&#62;
+        &#60;!--NAVIGATION BAR--&#62;
+        &#60;nav class="menu"&#62;
+            &#60;div class="nav-left"&#62;
+                &#60;ul&#62;
+                    &#60;li&#62;    
+                        &#60;a href="https:&#47;&#47;luarpy.github.io&#47;index.html"&#62;
+                            &#60;img class="logo" src="https:&#47;&#47;luarpy.github.io&#47;favicon.jpg" &#62;
+                            &#60;span class="sitename"&#62;Luarpy&#39;s blog&#60;&#47;span&#62;
+                        &#60;&#47;a&#62;
+                    &#60;&#47;li&#62;
+                &#60;&#47;ul&#62;
+            &#60;&#47;div&#62;
+            &#60;div class="nav-right"&#62;
+                &#60;ul&#62;
+                    &#60;li&#62;
+                        &#60;a href="https:&#47;&#47;luarpy.github.io&#47;arts&#47;contact.html"&#62;Contact&#60;&#47;a&#62;
+                    &#60;&#47;li&#62;
+                    &#60;li&#62;
+                        &#60;a href="https:&#47;&#47;github.com&#47;luarpy"&#62;Git&#60;&#47;a&#62;
+                    &#60;&#47;li&#62;
+                    &#60;li&#62;
+                        &#60;button onclick="setDarkMode()" class="dark-mode-toggle-button"&#62;☀&#60;&#47;button&#62;
+                        &#60;script type="text&#47;Javascript" src="https:&#47;&#47;luarpy.github.io&#47;toggle.js"&#62;&#60;&#47;script&#62;
+                    &#60;&#47;li&#62;
+
+                &#60;&#47;ul&#62;
+            &#60;&#47;div&#62;
+        &#60;&#47;nav&#62;
+        &#60;noscript&#62;This page uses a little bit of Javascript but it is not neccesary for normal usage&#60;&#47;noscript&#62;
+        &#60;h1&#62;Esto es un ejemplo de prueba&#60;&#47;h1&#62;
+        &#60;p&#62;Esto es texto de un ejemplo de prueba&#60;&#47;p&#62;
+    &#60;&#47;body&#62;
+    &#60;!--DOC FOOTER--&#62;
+    &#60;footer&#62;
+        &#60;p&#62;Licensed under &#60;a href="https:&#47;&#47;creativecommons.org&#47;licenses&#47;by-nc&#47;4.0&#47;"&#62;CC BY-NC 4.0&#60;&#47;a&#62;&#60;br&#62;
+    Created with a &#60;a href="https:&#47;&#47;github.com&#47;luarpy&#47;ssg"&#62;slightly modified&#60;&#47;a&#62; version of &#60;a href="https:&#47;&#47;www.romanzolotarev.com&#47;ssg.html"&#62;ssg&#60;&#47;a&#62; by Roman Zolotarev&#60;&#47;p&#62;
+    &#60;&#47;footer&#62;
+&#60;&#47;html&#62;
+</code></pre>
+
+<p>El procesado de un formato a otro es muy sencillo, por lo que solo hace falta redactar los documentos en formato Markdown y editar las partes del documento de la cabecera que se quieran utilizar.</p>
+
+<h2 id="cambios-que-contiene-mi-ssg">Cambios que contiene mi ssg</h2>
+
+<p>En mi versión basada en la de Woflgang, cambié algunas partes del código que me facilitaban unas tareas o me quitaban otras. </p>
+
+<p>La primera y más sencilla, es hacer que añada una línea informativa para cuando el buscador tiene el Javascript desactivado. La segunda, un simple botón que se añade en la base del archivo sobre el tag <code>&#60;&#47;body&#62;</code> de éste. La tercera, una sencilla sustitución de la palabra clave <code>https://luarpy.github.io</code> por la del dominio que se desee.</p>
+
+<p>Estos cambios o sustituciones se hacen si se activan los flags de configuración que están en el archivo <code>src&#47;.config</code>. Las variables que se encuentran ahí se cargan al principio de la ejecución y sobrescriben los valores por defecto. que contienen.</p>
+
+<p>Este es un ejemplo de unas variables que funcionan en el programa:</p>
+
+<pre><code class="language-bash">STYLESHEET="style.css" # Documento como estilo
+SCRIPT="toggle.js" # Documento con las funciones de Javascript
+NOSCRIPT="Yes" # Activa el añadir la línea de noscrip
+BUTTON_TEXT="Inicio" # Es el texto que se añade al botón que lleva a la página principal
+https://luarpy.github.io="https:&#47;&#47;example.com" # URL del dominio
+</code></pre>
+
+<p>También le he añadido una función que incrusta un botón al final de cada página, menos la principal, que lleva a la página principal de la web. Así es más fácil moverse de un lado a otro.</p>
+
+<h3 id="configuracin">Configuración</h3>
+
+<p>Todos los documentos a los que se haga referencia deben tener la ruta relativa respecto la de origen, que es la <code>src&#47;</code>. Luego estos serán copiados al destino o carpeta de salida <code>dst&#47;</code>.  </p>
+
+<ul>
+<li><p><strong>STYLESHEET</strong>: añade una línea en cada documento HTML que hace referencencia al  archivo que señale. Si no es un URL o enlace a otra plataforma, la línea que se genera hace referencia hacia el documento en la ruta relativa que los une. Es algo de ver, con un ejemplo más fácil:</p>
+
+<pre><code class="language-bash">└── dst&#47;
+├── arts&#47;
+│ └── generar_paginas_webs_con_ssg.html #&#60;- &#39;..&#47;style.css&#39;
+├── doc&#47;
+├── img&#47;
+├── index.html #&#60;- &#39;style.css&#39;
+├── style.css
+└── toggle.js
+</code></pre></li>
+<li><p><strong>SCRIPT</strong>: añade una línea en cada documento HTML que hace referencencia al archivo que señale.</p></li>
+<li><p><strong>NOSCRIPT</strong>: añade una línea en la que aparece el mensaje que se activa al ver que el Javascript está desactivado.</p></li>
+<li><p><strong>BUTTON_TEXT</strong>: cambia el texto del botón que se añade a cada página al final de esta. Por defecto utiliza &#8220;Main page&#8221;  como opción.</p></li>
+<li><p><strong>https://luarpy.github.io</strong>: si se ha añadido, sustituye el nombre que se ha añadido al ejecutar el script como 4º argumento de entrada. </p></li>
+</ul>
+
+]]></description>
+</item>
+</channel></rss>
