@@ -8,6 +8,7 @@
       <meta name="referrer" content="no-referrer">
       <title> Generar páginas web con un script en bash rápidamente</title> <!--Here goes file's title after processing-->
 
+      <link rel="icon" type="image/png" href="https://luarpy.github.io/favicon.jpg">
       <link rel="stylesheet" type="text/css" href="https://luarpy.github.io/styles.css">
     </head>
     <body class="">
@@ -25,24 +26,30 @@
             <div class="nav-right">
                 <ul>
                     <li>
-                        <a href="https://luarpy.github.io/arts/contact.html">Contact</a>
+                        <a href="https://luarpy.github.io/rss.xml">RSS</a>
                     </li>
                     <li>
                         <a href="https://github.com/luarpy">Git</a>
                     </li>
                     <li>
-                        <button onclick="setDarkMode()" class="dark-mode-toggle-button">☀</button>
-                        <script type="text/Javascript" src="https://luarpy.github.io/toggle.js"></script>
+                        <a href="https://luarpy.github.io/arts/contact.html">Contact</a>
                     </li>
+                    <li>
+                        <a href="https://github.com/about.html">About</a>
+                    </li>
+
+                    <li>
+                        <button onclick="setDarkMode()" class="dark-mode-toggle-button">☀</button>
+                                            </li>
                 
                 </ul>
             </div>
         </nav>
         <noscript>This page uses a little bit of Javascript but it is not neccesary for normal usage</noscript>
         
-<h1 id="Generar%20p%C3%A1ginas%20web%20con%20un%20script%20en%20bash%20r%C3%A1pidamente">Generar páginas web con un script en bash rápidamente</h1>
+<h1 id="generar-pginas-web-con-un-script-en-bash-rpidamente">Generar páginas web con un script en bash rápidamente</h1>
 
-<h6 id="Date%202021-11-03">Date 2021-11-03</h6>
+<h6 id="date-2021-11-03">Date 2021-11-03</h6>
 
 <p><img title="" src="https://luarpy.github.io/img/terminal capture.png" alt="" data-align="center"></p>
 
@@ -52,7 +59,7 @@
 
 <p>Lo que aquí me gustaría mostrar es como he hecho la personalización para mi caso particular de generar esta web.</p>
 
-<h2 id="C%C3%B3mo%20personalizar%20tus%20propia%20web%20con%20ssg">Cómo personalizar tus propia web con ssg</h2>
+<h2 id="cmo-personalizar-tus-propia-web-con-ssg">Cómo personalizar tus propia web con ssg</h2>
 
 <p>Primero personalicé mis propios segmentos de documento HTML para crear la cabecera y cola del documento final. Pongamos el ejemplo de un documento HTML básico para ir entendiendo:</p>
 
@@ -181,7 +188,7 @@ Esto es texto de un ejemplo de prueba
 
 <p>El procesado de un formato a otro es muy sencillo, por lo que solo hace falta redactar los documentos en formato Markdown y editar las partes del documento de la cabecera que se quieran utilizar.</p>
 
-<h2 id="Cambios%20que%20contiene%20mi%20ssg">Cambios que contiene mi ssg</h2>
+<h2 id="cambios-que-contiene-mi-ssg">Cambios que contiene mi ssg</h2>
 
 <p>En mi versión basada en la de Woflgang, cambié algunas partes del código que me facilitaban unas tareas o me quitaban otras. </p>
 
@@ -200,7 +207,7 @@ https://luarpy.github.io="https:&#47;&#47;example.com" # URL del dominio
 
 <p>También le he añadido una función que incrusta un botón al final de cada página, menos la principal, que lleva a la página principal de la web. Así es más fácil moverse de un lado a otro.</p>
 
-<h3 id="Configuraci%C3%B3n">Configuración</h3>
+<h3 id="configuracin">Configuración</h3>
 
 <p>Todos los documentos a los que se haga referencia deben tener la ruta relativa respecto la de origen, que es la <code>src&#47;</code>. Luego estos serán copiados al destino o carpeta de salida <code>dst&#47;</code>.  </p>
 
@@ -221,11 +228,14 @@ https://luarpy.github.io="https:&#47;&#47;example.com" # URL del dominio
 <li><p><strong>BUTTON_TEXT</strong>: cambia el texto del botón que se añade a cada página al final de esta. Por defecto utiliza &#8220;Main page&#8221;  como opción.</p></li>
 <li><p><strong>https://luarpy.github.io</strong>: si se ha añadido, sustituye el nombre que se ha añadido al ejecutar el script como 4º argumento de entrada. </p></li>
 </ul>
-<p class="main-page"><a class="back" href="https://luarpy.github.io">Main page</a></p>
+        <script type="text/Javascript" src="https://luarpy.github.io/toggle.js"></script>
+        <span><a class="subir" href="#">Subir</a></span>
     </body>
     <footer>
-        <p>Licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a><br>
-	Created with a <a href="https://github.com/luarpy/ssg">slightly modified</a> version of <a href="https://www.romanzolotarev.com/ssg.html">ssg</a> by Roman Zolotarev</p>
+        <span><a href="https://luarpy.github.io">Página principal</a></span>
+        <span><a href="https://luarpy.github.io/arts/contact.html">Contacto</a></span>
+        <span><a href="https://luarpy.github.io/rss.xml">RSS</a></span>
+        <span>Licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a><br>
+	Created with a <a href="https://github.com/luarpy/ssg">slightly modified</a> version of <a href="https://www.romanzolotarev.com/ssg.html">ssg</a> by Roman Zolotarev</span>           
     </footer>
-    <!--DOC FOOTER-->
 </html>
