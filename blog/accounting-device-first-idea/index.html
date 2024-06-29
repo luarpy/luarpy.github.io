@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" type="text/css" href="https://luarpy.github.io/css/style.css">
+    <script src="/script/utils.js"></script>
+    <link rel="shortcut icon" type="image/png" href="https://luarpy.github.io/favicon.png"/>
+    <title>Luarpy&#x27;s blog</title>
+</head>
+
+<body onload="onPageLoad()">
+
+    <nav id="navbar">
+        <div class="nav-left">
+            <ul>
+                <li id="home">
+                    <div>
+                        <a href="/">
+                            <img class="logo" src="https://luarpy.github.io/favicon.png" alt="" />
+                            <span class="sitename">Luarpy&#x27;s blog</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <ul>
+                <li>
+                    <div>
+                        <a href="https://luarpy.github.io/rss.xml" aria-label="Subscribirse al feed" title="Subscribirse al feed">Feed</a>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href="https://github.com/luarpy" aria-label="Ir a la página de GitHub" title="Ir a la página de GitHub">Git</a>
+                    </div>
+                </li>
+                <li>
+                    <div id="blog">
+                        <a href="https://luarpy.github.io/blog" title="Ir a la sección del blog" class="active">Blog</a>
+                    </div>
+                </li>
+            </ul>
+            <ul id="links"></ul>
+        </div>
+    </nav>
+
+    <noscript>
+        <div id="no-js-warning">Esta página utiliza JavaScript para algunas funcionabilidades pero no afecta para su correcto funcionamiento</div>
+    </noscript>
+
+    <div id="body-content">
+        <section class="section">
+        <div class="container">
+            
+<link rel="stylesheet" type="text/css" href="https://luarpy.github.io/css/blog-page.css">
+
+
+<article class="article" id="blog-content">
+  <p class="date">Publicado el 2024-06-29</p>
+  <p class="date">
+    Actualizado el 
+    
+      2024-06-29
+    
+  </p>
+  <h1 class="title" style="font-family: monospace; margin-top: 0;">
+    Income counter wearable: first idea
+  </h1>
+  
+  <details>
+    <summary id="cite-article" class="button" onclick="copyToClipboard(document.getElementById('blog-reference').innerText)">Citar</summary>
+    <div id="blog-reference">
+      Luarpy  
+      
+        <italic>
+          (2024-06-29). 
+        </italic>
+      
+      "<i>Income counter wearable: first idea</i>". 
+      Luarpy&#x27;s blog. 
+      <a href="https:&#x2F;&#x2F;luarpy.github.io&#x2F;blog&#x2F;accounting-device-first-idea&#x2F;">
+        <italic>https:&#x2F;&#x2F;luarpy.github.io&#x2F;blog&#x2F;accounting-device-first-idea&#x2F;</italic>
+      </a>
+    </div>
+  </details>
+  <section id="toc">
+    
+    <details id="toc-content">
+      <summary id="toc-title">
+        TOC
+      </summary>
+      <ol>
+      
+          <li>
+              <a href="https://luarpy.github.io/blog/accounting-device-first-idea/#idea">Idea</a>
+              
+          </li>
+      
+          <li>
+              <a href="https://luarpy.github.io/blog/accounting-device-first-idea/#concept">Concept</a>
+              
+          </li>
+      
+          <li>
+              <a href="https://luarpy.github.io/blog/accounting-device-first-idea/#first-desing">First desing</a>
+              
+          </li>
+      
+      </ol>
+      
+    </details>
+  </section>
+  <h2 id="idea">Idea</h2>
+<p>Some days ago, I found a short video on YouTube where a guy showed a gadget to get updates on the US public debt (I don't share any opinions on it). I found the idea of wearing a pocket-sized gadget at the workplace that would show a count of the money I earn to be attractive. As a rough idea, I thought of making a similarly shaped device that shows my income per month, day or hour as time goes by. This is something I have previously thought of a device to get a better idea of my productivity or income generated per hour worked.</p>
+<p><img src="/img/account_wearable/inspiration_device.png" alt="T. Massive holding the gadget" /></p>
+<p>This device is designed to represent a person's income over a period of time, providing them with an expected idea of their income capabilities.</p>
+<h2 id="concept">Concept</h2>
+<p>These are the purposes I expect from this device</p>
+<ul>
+<li>Track/count my income for each hour, day, or month.</li>
+<li>Portability: The shape and size must allow it to be handheld and fit into a pocket.</li>
+<li>Informative and simple: There is no need for complex and multipurpose data on the display.</li>
+</ul>
+<h2 id="first-desing">First desing</h2>
+<p>As a handheld device, it will sit on the desktop or be held in the hand. This way, it should provide an angled visual display that is comfortable to view and hold.</p>
+<p><img src="/img/account_wearable/income_wearable.png" alt="" /></p>
+<p>The model will be 3D printed for prototyping and used in a development environment. For this purpose, it will need to be opened several times, so it makes sense to use fasteners with inserts into the plastic.</p>
+<p>The next steps will be to create a better design and a CAD model for a first impression.</p>
+
+</article>
+<section id="blog-utils">
+  <button id="back-to-top" class="button" role="button" href="#">Up</button>
+  <script>
+  
+    document.getElementById('back-to-top').addEventListener('click', function(event) {
+        event.preventDefault(); 
+    
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    </script>
+</section>
+
+        </div>
+        <br>
+        </section>    
+
+    </div>
+    
+    <footer>
+        <div class="row">
+            <ul>
+                <li><a href="https://luarpy.github.io/about">About</a></li>
+                <li><a href="https://luarpy.github.io/contact">Contact</a></li>
+                <li><a href="https://luarpy.github.io/linktree">LinkTree</a></li>
+                <li><a href="https://luarpy.github.io/rss.xml">Feed</a></li>
+                <li><a href="https://luarpy.github.io/privacy">Privacy</a></li>
+            </ul>
+        </div>
+        <div class="row">
+                <span>Created with ❤ &amp; <a href="https://www.getzola.org">Zola</a></span>
+                <span>nov 2023</span>
+        </div>
+    </footer>
+    <!--
+               /'''''''\ 
+              |  Osito  | 
+        (\__/) \ ______/
+        (•ㅅ•)  |/ 
+        / 　 づ
+    -->
+</body>
+</html>

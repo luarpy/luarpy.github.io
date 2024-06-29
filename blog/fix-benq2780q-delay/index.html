@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" type="text/css" href="https://luarpy.github.io/css/style.css">
+    <script src="/script/utils.js"></script>
+    <link rel="shortcut icon" type="image/png" href="https://luarpy.github.io/favicon.png"/>
+    <title>Luarpy&#x27;s blog</title>
+</head>
+
+<body onload="onPageLoad()">
+
+    <nav id="navbar">
+        <div class="nav-left">
+            <ul>
+                <li id="home">
+                    <div>
+                        <a href="/">
+                            <img class="logo" src="https://luarpy.github.io/favicon.png" alt="" />
+                            <span class="sitename">Luarpy&#x27;s blog</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <ul>
+                <li>
+                    <div>
+                        <a href="https://luarpy.github.io/rss.xml" aria-label="Subscribirse al feed" title="Subscribirse al feed">Feed</a>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href="https://github.com/luarpy" aria-label="Ir a la página de GitHub" title="Ir a la página de GitHub">Git</a>
+                    </div>
+                </li>
+                <li>
+                    <div id="blog">
+                        <a href="https://luarpy.github.io/blog" title="Ir a la sección del blog" class="active">Blog</a>
+                    </div>
+                </li>
+            </ul>
+            <ul id="links"></ul>
+        </div>
+    </nav>
+
+    <noscript>
+        <div id="no-js-warning">Esta página utiliza JavaScript para algunas funcionabilidades pero no afecta para su correcto funcionamiento</div>
+    </noscript>
+
+    <div id="body-content">
+        <section class="section">
+        <div class="container">
+            
+<link rel="stylesheet" type="text/css" href="https://luarpy.github.io/css/blog-page.css">
+
+
+<article class="article" id="blog-content">
+  <p class="date">Publicado el 2023-11-22</p>
+  <p class="date">
+    Actualizado el 
+    
+      2023-11-22
+    
+  </p>
+  <h1 class="title" style="font-family: monospace; margin-top: 0;">
+    Fixing BenQ Monitor Delay
+  </h1>
+  
+  <details>
+    <summary id="cite-article" class="button" onclick="copyToClipboard(document.getElementById('blog-reference').innerText)">Citar</summary>
+    <div id="blog-reference">
+      Luarpy  
+      
+        <italic>
+          (2023-11-22). 
+        </italic>
+      
+      "<i>Fixing BenQ Monitor Delay</i>". 
+      Luarpy&#x27;s blog. 
+      <a href="https:&#x2F;&#x2F;luarpy.github.io&#x2F;blog&#x2F;fix-benq2780q-delay&#x2F;">
+        <italic>https:&#x2F;&#x2F;luarpy.github.io&#x2F;blog&#x2F;fix-benq2780q-delay&#x2F;</italic>
+      </a>
+    </div>
+  </details>
+  <section id="toc">
+    
+    <details id="toc-content">
+      <summary id="toc-title">
+        TOC
+      </summary>
+      <ol>
+      
+          <li>
+              <a href="https://luarpy.github.io/blog/fix-benq2780q-delay/#problema">Problema</a>
+              
+          </li>
+      
+          <li>
+              <a href="https://luarpy.github.io/blog/fix-benq2780q-delay/#solucion">Solución</a>
+              
+          </li>
+      
+          <li>
+              <a href="https://luarpy.github.io/blog/fix-benq2780q-delay/#discusion">Discusión</a>
+              
+          </li>
+      
+      </ol>
+      
+    </details>
+  </section>
+  <p>TL;DR:
+El modelo BenQ EX2780Q tiene un delay de frábrica en la salida del audio por altavoces; este script escrito en Bash emite un flujo de datos sin sonido para mantener activo el trigger de entrada del audio al monitor.</p>
+<span id="continue-reading"></span><h2 id="problema">Problema</h2>
+<p>En esta entrada, abordaremos un problema común que afecta a los usuarios del modelo BenQ EX2780Q, un monitor conocido por su relación calidad-precio en imagen y sonido. Uno de los desafíos que algunos propietarios han experimentado es un retraso molesto al reproducir audio después de un período de silencio. Hasta la fecha, ha habido <a href="https://www.reddit.com/r/BenQ/comments/qxn8la/ex2780q_sound_delay/">dos soluciones</a> posibles con el monitor:</p>
+<ul>
+<li>Mandar el monitor de vuelta para una actualización de firmware</li>
+<li>Reproducir música/vídeo al 1% de nivel de sonido</li>
+</ul>
+<p>El retraso dura unos 5 segundos y acaba siendo molesto a la hora de consumir contenido en donde los cortes o saltos de haber sonido a no haberlo son frecuentes. Generalmente se dan por perdidos los primeros segundos de la emisión.</p>
+<h2 id="solucion">Solución</h2>
+<p>No te preocupes, aquí te ofreceremos una solución efectiva para resolver este inconveniente y aprovechar al máximo tu experiencia audiovisual con este monitor. La solución viene a costa de la idea ofrecida por un usuario de la plataforma de Reddit dónde éste comenta que deja un 1% de un canal de sonido abierto para no llevar a suspensión el sistema encargado de emitir el sonido.</p>
+<p>La idea es la siguiente:</p>
+<pre data-lang="txt" style="background-color:#383838;color:#e6e1dc;" class="language-txt "><code class="language-txt" data-lang="txt"><span>Iniciar el escritorio -&gt; Ejecutar script -&gt; Maneter en bucle la reproducción el audio
+</span></code></pre>
+<p>Para ello he redactado el siguiente script como la idea de concepto muy sencilla:</p>
+<pre data-lang="bash" style="background-color:#383838;color:#e6e1dc;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="font-style:italic;color:#7c7865;">#!/bin/env sh 
+</span><span>
+</span><span style="color:#d0d0ff;">duration</span><span style="color:#cc7833;">=</span><span style="color:#a5c261;">180  
+</span><span>
+</span><span style="color:#86c20e;">stop_this</span><span>(){    
+</span><span>  </span><span style="color:#da4939;">echo </span><span style="color:#c1be91;">&quot;Deteniendo el script y todos los procesos relacionados...&quot;
+</span><span>  
+</span><span>  </span><span style="font-style:italic;color:#7c7865;"># Matar todos los procesos secundarios (reemplace &#39;your_command&#39; con los comandos relevantes)
+</span><span>  pkill</span><span style="font-style:italic;color:#fd971f;"> -f </span><span style="color:#c1be91;">&quot;ffmpeg -f lavfi -i anullsrc=r=44100:cl=mono -t $</span><span style="color:#d0d0ff;">duration</span><span style="color:#c1be91;"> -f alsa default&quot;
+</span><span>
+</span><span>  </span><span style="color:#da4939;">exit</span><span> 1  </span><span style="font-style:italic;color:#7c7865;"># Salir del script
+</span><span>}
+</span><span>
+</span><span style="color:#da4939;">trap</span><span> stop_this INT
+</span><span>
+</span><span style="font-style:italic;color:#7c7865;"># Generar audio silencioso en un archivo temporal
+</span><span style="color:#d0d0ff;">temp_audio_file</span><span style="color:#cc7833;">=</span><span style="color:#a5c261;">$(mktemp)
+</span><span>ffmpeg</span><span style="font-style:italic;color:#fd971f;"> -f</span><span> lavfi</span><span style="font-style:italic;color:#fd971f;"> -i </span><span style="color:#c1be91;">&quot;anullsrc=r=44100:cl=mono&quot;</span><span style="font-style:italic;color:#fd971f;"> -t </span><span style="color:#c1be91;">&quot;$</span><span style="color:#d0d0ff;">duration</span><span style="color:#c1be91;">&quot;</span><span style="font-style:italic;color:#fd971f;"> -f</span><span> wav </span><span style="color:#c1be91;">&quot;$</span><span style="color:#d0d0ff;">temp_audio_file</span><span style="color:#c1be91;">&quot;
+</span><span>
+</span><span style="color:#cc7833;">while </span><span>true</span><span style="color:#cc7833;">; do
+</span><span>  aplay </span><span style="color:#c1be91;">&quot;$</span><span style="color:#d0d0ff;">temp_audio_file</span><span style="color:#c1be91;">&quot;  </span><span style="font-style:italic;color:#7c7865;"># Reproducir el archivo con aplay (ajusta según tu sistema)
+</span><span style="color:#cc7833;">done
+</span></code></pre>
+<p>Basta con ejecutar en el arranque del entorno del escritorio el script para que desde un primer momento se quede funcionando hasta que salgamos de él. Dependerá del entorno de escritorio que se esté utilizando la implementación de éste.</p>
+<h2 id="discusion">Discusión</h2>
+<p>Cualquier monitor debería de ser vendido sin un problema tan evidente para cualquier usuario final como esté. La opción de actualizar el firmware llevándolo al fabricante es posible, aunque conlleva un coste de transporte y suposición de que hay una tienda local para repararlo que no es viable en todos los casos. Es más, la solución más sencilla habría sido habilitar el firmware del monitor para cualquier usuario en la página oficial con una guía para la instalación.</p>
+<p>Aunque la solución presentada es primitiva y simple para solucionar el problema, no llega a poder ser la mejor implementación siquiera. Habría que estudiar los paquetes enviados al monitor y cómo se da la comunicación PC y monitor para simular un constante flujo de datos. Es más, en alguno momento aleatorio, es decir sin haber demostrado lo contrario más que percepción subjetiva, el monitor tiene 0.5s de corte del audio por altavoces en él.</p>
+<p>Además el script aborda el problema desde el lenguaje de programación Bash, un lenguaje poco atractivo para Windows. En un futuro habría que atajar el problema desde los sistemas de audio encargados de reproducir el contenido de audio a los dispositivos externos. Un posible caso de estudio para GNU/Linux sería la configuración de una variable, como concepto, de <code>no_delay = 0</code> en <a href="https://www.pipewire.org/">PipeWire</a>.</p>
+
+</article>
+<section id="blog-utils">
+  <button id="back-to-top" class="button" role="button" href="#">Up</button>
+  <script>
+  
+    document.getElementById('back-to-top').addEventListener('click', function(event) {
+        event.preventDefault(); 
+    
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    </script>
+</section>
+
+        </div>
+        <br>
+        </section>    
+
+    </div>
+    
+    <footer>
+        <div class="row">
+            <ul>
+                <li><a href="https://luarpy.github.io/about">About</a></li>
+                <li><a href="https://luarpy.github.io/contact">Contact</a></li>
+                <li><a href="https://luarpy.github.io/linktree">LinkTree</a></li>
+                <li><a href="https://luarpy.github.io/rss.xml">Feed</a></li>
+                <li><a href="https://luarpy.github.io/privacy">Privacy</a></li>
+            </ul>
+        </div>
+        <div class="row">
+                <span>Created with ❤ &amp; <a href="https://www.getzola.org">Zola</a></span>
+                <span>nov 2023</span>
+        </div>
+    </footer>
+    <!--
+               /'''''''\ 
+              |  Osito  | 
+        (\__/) \ ______/
+        (•ㅅ•)  |/ 
+        / 　 づ
+    -->
+</body>
+</html>
