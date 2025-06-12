@@ -1,0 +1,207 @@
+<!doctype html>
+<html class="not-ready lg:text-base overflow-y-scroll scroll-pt-14" lang="en">
+
+<head prefix="og: https://ogp.me/ns# article: https://ogp.me/ns/article#">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="generator" content="Zola" />
+  <title>Income counter wearable: first idea | Luarpy's blog</title>
+  <meta property="og:site_name" content="Luarpy&apos;s blog" />
+  <meta property="og:title" content="Income counter wearable: first idea" />
+  <meta property="og:url" content="https://luarpy.github.io/blog/accounting-device-first-idea/" />
+  <link rel="canonical" href="https://luarpy.github.io/blog/accounting-device-first-idea/" />
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2024-06-29T00:00:00+00:00" />
+  <meta property="article:tag" content="hardware" />
+  <meta property="article:tag" content="design" />
+  <meta property="article:tag" content="wearable" />
+  <link rel="alternate" type="application/rss+xml" href="https://luarpy.github.io/rss.xml" title="Luarpy&apos;s blog | RSS" />
+  <link rel="alternate" type="application/atom+xml" href="https://luarpy.github.io/atom.xml" title="Luarpy&apos;s blog | Atom" />
+  <!-- Begin Head inject -->
+  
+  <!-- End Head inject -->
+  <link rel="stylesheet" href="https://luarpy.github.io/main.min.css?h=fc65ba308cf36d3ba82c" />
+  <style>
+  :root{--bg: #f4f4f5; --header: #e4e4e7; color-scheme: light;}
+  :root.dark{--bg: #18181b; --header: #27272a; color-scheme: dark;}
+  </style>
+  <meta name="theme-color" data-light="#e4e4e7" data-dark="#27272a" content="#e4e4e7" />
+  <script src="https://luarpy.github.io/js/linkita.min.js?h=1dd3ed42fc674277bc34"></script>
+  <!-- Begin Head End inject -->
+  
+  <!-- End Head End inject -->
+</head>
+
+<body class="text-black duration-100 ease-out bg-[var(--bg)] dark:text-white">
+  <!-- Header -->
+<header class="bg-[var(--header)] fixed top-0 z-40 mx-auto min-h-[3.25rem] w-full header-icons">
+  <div class="mx-auto w-full max-w-4xl p-2.5 lg:flex lg:justify-between">
+    <div class="flex justify-between">
+      <div class="flex items-center min-h-8">
+        <a title="Go to home page" accesskey="!"
+          href="https://luarpy.github.io/" class="text-2xl font-semibold">Luarpy&#x27;s blog</a>
+        <button type="button" title="Switch color scheme" accesskey="$"
+          onclick="window.linkita.toggleDarkMode();" ondblclick="window.linkita.resetDarkMode();"
+          class="btn-dark ml-4 h-6 w-6 shrink-0 cursor-pointer text-[0] bg-center bg-no-repeat bg-cover dark:invert [background-image:var(--icon-theme-dark)] dark:[background-image:var(--icon-theme-light)]"
+        ></button>
+      </div>
+      <div title="Menu" role="button" accesskey="+" tabindex="0"
+        class="btn-menu relative z-50 flex h-8 w-8 shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+        onclick="window.linkita.toggleHeaderMenu();"
+        onkeydown="(event.keyCode == 13 || event.keyCode == 32) ? event.preventDefault() || window.linkita.toggleHeaderMenu() : true;"
+      ></div>
+    </div>
+    <nav class="flex w-full items-center lg:w-auto">
+      <menu
+        class="nav-wrapper flex w-full flex-col py-2 lg:w-auto lg:flex-row lg:self-center lg:py-0">
+        <li>
+          <a
+            class="primary-link block py-2 text-center text-lg font-medium lg:px-3 lg:py-0"
+            href="https://luarpy.github.io/blog/"
+          >Blog</a>
+        </li>
+        <li>
+          <a
+            class="primary-link block py-2 text-center text-lg font-medium lg:px-3 lg:py-0"
+            href="https://luarpy.github.io/categories/"
+          >Categories</a>
+        </li>
+        <li>
+          <a
+            class="primary-link block py-2 text-center text-lg font-medium lg:px-3 lg:py-0"
+            href="https://luarpy.github.io/tags/"
+          >Tags</a>
+        </li>
+        <li>
+          <a
+            class="primary-link block py-2 text-center text-lg font-medium lg:px-3 lg:py-0"
+            href="https://luarpy.github.io/about/"
+          >About</a>
+        </li>
+        <li>
+          <a
+            class="primary-link block py-2 text-center text-lg font-medium lg:px-3 lg:py-0"
+            href="https://luarpy.github.io/contact"
+          >Contact</a>
+        </li>
+      </menu>
+      <!-- Begin Header Nav inject -->
+      
+      <!-- End Header Nav inject -->
+    </nav>
+  </div>
+</header>
+
+  <!-- Begin Body Start inject -->
+  
+  <!-- End Body Start inject -->
+  <main class="prose prose-neutral relative mx-auto min-h-[calc(100%-4rem)]
+    max-w-3xl break-words px-4 pb-12 pt-28 lg:pt-32 dark:prose-invert prose-pre:rounded-lg prose-img:rounded-lg">
+    
+<article>
+  <!-- Begin Page Start inject -->
+  
+  <!-- End Page Start inject -->
+
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Income counter wearable: first idea</h1>
+    <!-- Page Info -->
+<div class="text-sm antialiased opacity-80"><time
+      datetime="2024-06-29T00:00:00+00:00">2024-06-29</time><span
+        class="mx-1">&middot;</span><time
+    datetime="PT0H2M0S">2&nbsp;min</time>
+</div>
+
+  </header>
+  <!-- TOC -->
+<div class="block-bg mb-12 rounded-lg p-2 text-lg">
+  <details>
+    <summary class="select-none py-0.5 lg:py-1 pl-4" accesskey="=">
+      <span class="cursor-pointer">Table of Contents</span>
+    </summary>
+    <div class="px-2">
+      <ul>
+        <li>
+          <a class="no-underline hover:underline" href="https://luarpy.github.io/blog/accounting-device-first-idea/#idea">Idea</a>
+        </li>
+        <li>
+          <a class="no-underline hover:underline" href="https://luarpy.github.io/blog/accounting-device-first-idea/#concept">Concept</a>
+        </li>
+        <li>
+          <a class="no-underline hover:underline" href="https://luarpy.github.io/blog/accounting-device-first-idea/#first-desing">First desing</a>
+        </li>
+      </ul>
+    </div>
+  </details>
+</div>
+
+  <!-- Content -->
+  <section><h2 id="idea">Idea</h2>
+<p>Some days ago, I found a short video on YouTube where a guy showed a gadget to get updates on the US public debt (I don't share any opinions on it). I found the idea of wearing a pocket-sized gadget at the workplace that would show a count of the money I earn to be attractive. As a rough idea, I thought of making a similarly shaped device that shows my income per month, day or hour as time goes by. This is something I have previously thought of a device to get a better idea of my productivity or income generated per hour worked.</p>
+<p><img src="/img/account_wearable/inspiration_device.png" alt="T. Massive holding the gadget" /></p>
+<p>This device is designed to represent a person's income over a period of time, providing them with an expected idea of their income capabilities.</p>
+<h2 id="concept">Concept</h2>
+<p>These are the purposes I expect from this device</p>
+<ul>
+<li>Track/count my income for each hour, day, or month.</li>
+<li>Portability: The shape and size must allow it to be handheld and fit into a pocket.</li>
+<li>Informative and simple: There is no need for complex and multipurpose data on the display.</li>
+</ul>
+<h2 id="first-desing">First desing</h2>
+<p>As a handheld device, it will sit on the desktop or be held in the hand. This way, it should provide an angled visual display that is comfortable to view and hold.</p>
+<p><img src="/img/account_wearable/income_wearable.png" alt="" /></p>
+<p>The model will be 3D printed for prototyping and used in a development environment. For this purpose, it will need to be opened several times, so it makes sense to use fasteners with inserts into the plastic.</p>
+<p>The next steps will be to create a better design and a CAD model for a first impression.</p>
+</section>
+  <hr />
+  <!-- Post Taxonomies -->
+<footer class="mt-12 flex flex-col" tabindex="-1" accesskey="_">
+  <div class="mb-2 flex flex-wrap">
+    <span class="block-bg mb-1.5 mr-1.5 rounded-lg px-5 py-1.5">Tags</span>
+    
+    <a
+      class="block-bg block-hover mb-1.5 mr-1.5 rounded-lg px-5 py-1.5 no-underline"
+      href="https://luarpy.github.io/tags/hardware/">hardware</a>
+    
+    <a
+      class="block-bg block-hover mb-1.5 mr-1.5 rounded-lg px-5 py-1.5 no-underline"
+      href="https://luarpy.github.io/tags/design/">design</a>
+    
+    <a
+      class="block-bg block-hover mb-1.5 mr-1.5 rounded-lg px-5 py-1.5 no-underline"
+      href="https://luarpy.github.io/tags/wearable/">wearable</a>
+    
+  </div>
+</footer>
+
+  <!-- Begin Page End inject -->
+  
+  <!-- End Page End inject -->
+</article>
+
+  </main>
+  <!-- Footer -->
+<footer class="mx-auto flex lg:mt-5 max-w-3xl flex-wrap items-center px-4 py-3 text-sm opacity-60">
+  <div class="mr-auto basis-full lg:basis-1/2">
+  © <time datetime="2025">2025</time> luarpy
+  </div>
+  <div class="flex basis-full lg:basis-1/2 lg:justify-end">
+    <span class="mr-6 lg:ml-6">
+      <a class="link" href="https://www.getzola.org/" target="_blank">Powered by Zola</a>
+    </span>
+    <a class="link" href="https://www.getzola.org/themes/linkita/" target="_blank">&#9998; Linkita</a>
+  </div>
+  <!-- Begin Footer inject -->
+  
+  <!-- End Footer inject -->
+</footer>
+
+  
+
+  <!-- Begin Body End inject -->
+  
+  <!-- End Body End inject -->
+</body>
+
+</html>

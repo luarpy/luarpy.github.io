@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Luarpy&#x27;s blog - hardware</title>
+    <link rel="self" type="application/atom+xml" href="https://luarpy.github.io/tags/hardware/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://luarpy.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-06-29T00:00:00+00:00</updated>
+    <id>https://luarpy.github.io/tags/hardware/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Income counter wearable: first idea</title>
+        <published>2024-06-29T00:00:00+00:00</published>
+        <updated>2024-06-29T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              luarpy
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://luarpy.github.io/blog/accounting-device-first-idea/"/>
+        <id>https://luarpy.github.io/blog/accounting-device-first-idea/</id>
+        
+        <content type="html" xml:base="https://luarpy.github.io/blog/accounting-device-first-idea/">&lt;h2 id=&quot;idea&quot;&gt;Idea&lt;&#x2F;h2&gt;
+&lt;p&gt;Some days ago, I found a short video on YouTube where a guy showed a gadget to get updates on the US public debt (I don&#x27;t share any opinions on it). I found the idea of wearing a pocket-sized gadget at the workplace that would show a count of the money I earn to be attractive. As a rough idea, I thought of making a similarly shaped device that shows my income per month, day or hour as time goes by. This is something I have previously thought of a device to get a better idea of my productivity or income generated per hour worked.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;account_wearable&#x2F;inspiration_device.png&quot; alt=&quot;T. Massive holding the gadget&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This device is designed to represent a person&#x27;s income over a period of time, providing them with an expected idea of their income capabilities.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;concept&quot;&gt;Concept&lt;&#x2F;h2&gt;
+&lt;p&gt;These are the purposes I expect from this device&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Track&#x2F;count my income for each hour, day, or month.&lt;&#x2F;li&gt;
+&lt;li&gt;Portability: The shape and size must allow it to be handheld and fit into a pocket.&lt;&#x2F;li&gt;
+&lt;li&gt;Informative and simple: There is no need for complex and multipurpose data on the display.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;first-desing&quot;&gt;First desing&lt;&#x2F;h2&gt;
+&lt;p&gt;As a handheld device, it will sit on the desktop or be held in the hand. This way, it should provide an angled visual display that is comfortable to view and hold.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;img&#x2F;account_wearable&#x2F;income_wearable.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The model will be 3D printed for prototyping and used in a development environment. For this purpose, it will need to be opened several times, so it makes sense to use fasteners with inserts into the plastic.&lt;&#x2F;p&gt;
+&lt;p&gt;The next steps will be to create a better design and a CAD model for a first impression.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>
