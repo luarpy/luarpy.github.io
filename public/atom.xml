@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Luarpy&#x27;s blog</title>
+    <link rel="self" type="application/atom+xml" href="https://luarpy.github.io/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://luarpy.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-11-22T00:00:00+00:00</updated>
+    <id>https://luarpy.github.io/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Fixing BenQ Monitor Delay</title>
+        <published>2023-11-22T00:00:00+00:00</published>
+        <updated>2023-11-22T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              luarpy
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://luarpy.github.io/blog/fix-benq2780q-delay/"/>
+        <id>https://luarpy.github.io/blog/fix-benq2780q-delay/</id>
+        
+        <summary type="html">&lt;p&gt;TL;DR:
+El modelo BenQ EX2780Q tiene un delay de frábrica en la salida del audio por altavoces; este script escrito en Bash emite un flujo de datos sin sonido para mantener activo el trigger de entrada del audio al monitor.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Reparación Delonghi Dedica</title>
+        <published>2023-11-10T00:00:00+00:00</published>
+        <updated>2023-11-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              luarpy
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://luarpy.github.io/blog/delonghi-repair-blog/"/>
+        <id>https://luarpy.github.io/blog/delonghi-repair-blog/</id>
+        
+        <content type="html" xml:base="https://luarpy.github.io/blog/delonghi-repair-blog/">&lt;p&gt;TLDR; Comprar los kits ofrecidos en Amazon para bomba de agua y válvula. Necesitas un destornillador con cabeza Torx T6 para abrir la tapa trasera. Delonghi no ofrece manuales para reparar las máquinas.&lt;&#x2F;p&gt;
+&lt;p&gt;Por mucho que Brad Pitt aparezca como actor de teletienda en cómo utilizar una cafetera de tres botones, a veces la sencillez conlleva un diseño complejo.&lt;&#x2F;p&gt;
+&lt;p&gt;Las cafeteras tipo expresso hacen uso de válvulas y bombas de agua diseñadas al por mayor, donde un único diseño es utilizado en múltiples modelos. Como el agua lleva cal, aunque sea filtrada, esta se acumula y bloquea el paso del agua y por lo tanto es necesario un mantenimiento periódico.&lt;&#x2F;p&gt;
+&lt;p&gt;Después de 6 años de uso diario, el paso del agua por la válvula de nuestra cafetera quedó bloqueada y fuera de garantía. La solución fue sencilla, buscar cuales eran los principales problemas a esperar en una cafetera de este tipo y encontrar las búsquedas más comunes relacionadas al modelo y marca.&lt;&#x2F;p&gt;
+&lt;p&gt;Evidentemente, las primeras búsquedas ya ofrecían la solución: Delonghi Dedica pump and valve repair kit. La solución era evidente y fue suficiente con comprar el kit ofrecido por Amazon. Finalmente llegó y quedaba abrir el producto.&lt;&#x2F;p&gt;
+&lt;p&gt;Una vez comprado, únicamente hace falta abrir la parte trasera con un destornillador [que no tiene nadie] e instalar los elementos. Cuidado que se se puede dañar los tubos de agua fácilmente.&lt;&#x2F;p&gt;
+&lt;p&gt;No hace falta decir que es mejor desconectar la cafetera de la pared en todo momento.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Generar páginas web con un script en bash rápidamente</title>
+        <published>2022-03-23T00:00:00+00:00</published>
+        <updated>2022-03-23T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              luarpy
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://luarpy.github.io/blog/generar-paginas-webs-con-ssg/"/>
+        <id>https://luarpy.github.io/blog/generar-paginas-webs-con-ssg/</id>
+        
+        <content type="html" xml:base="https://luarpy.github.io/blog/generar-paginas-webs-con-ssg/">&lt;p&gt;Este proyecto está basado en el software de &lt;a href=&quot;https:&#x2F;&#x2F;www.romanzolotarev.com&#x2F;ssg.html&quot;&gt;Romazo Loratev&lt;&#x2F;a&gt; y en la modificación de &lt;a href=&quot;https:&#x2F;&#x2F;vid.puffyan.us&#x2F;watch?v=N_ttw2Dihn8&quot;&gt;Wolfgang&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;En el documento  &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;luarpy&#x2F;ssg&#x2F;blob&#x2F;main&#x2F;README.md&quot;&gt;README&lt;&#x2F;a&gt; aparece explicado como utilizar este pequeño software para generar tus propios documentos HTML a partir de Markdown. Mismamente este documento esta transformado con esta técnica.&lt;&#x2F;p&gt;
+&lt;p&gt;Lo que aquí me gustaría mostrar es como he hecho la personalización para mi caso particular de generar esta web.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;como-personalizar-tus-propia-web-con-ssg&quot;&gt;Cómo personalizar tus propia web con ssg&lt;&#x2F;h2&gt;
+&lt;p&gt;Primero personalicé mis propios segmentos de documento HTML para crear la cabecera y cola del documento final. Pongamos el ejemplo de un documento HTML básico para ir entendiendo:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;html&quot; class=&quot;language-html &quot;&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&amp;lt;html&amp;gt;
+    &amp;lt;head&amp;gt;
+        &amp;lt;!--Aqui suelen colocarse los enlaces a páginas que
+        dan estilo o aplican un tema al documento final--&amp;gt;
+    &amp;lt;&amp;#x2F;head&amp;gt;
+    &amp;lt;body&amp;gt;
+        &amp;lt;!--Aquí suele ir el contenido del articulo--&amp;gt;
+    &amp;lt;&amp;#x2F;body&amp;gt;
+    &amp;lt;footer&amp;gt;
+        &amp;lt;!--Aquí va el pie de página, raras veces aparece--&amp;gt;
+    &amp;lt;&amp;#x2F;footer&amp;gt;
+&amp;lt;&amp;#x2F;html&amp;gt;
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;De este ejemplo sencillo de un HTML, el funcionamiento consiste en cortar por la mitad del cuerpo del documento (&lt;code&gt;body&lt;&#x2F;code&gt;) para insertar la conversión que se hace de Markdown a HTML. Por lo tanto aquí ya se puede personalizar cada uno la parte superior e inferior a su gusto. Veamos mis ejemplos:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;html&quot; class=&quot;language-html &quot;&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html&amp;gt;
+    &amp;lt;!--DOC HEADER--&amp;gt;
+    &amp;lt;head&amp;gt;
+      &amp;lt;title&amp;gt;&amp;lt;&amp;#x2F;title&amp;gt; &amp;lt;!--Here goes file&amp;#x27;s title after processing--&amp;gt;
+      &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text&amp;#x2F;css&amp;quot; href=&amp;quot;https:&amp;#x2F;&amp;#x2F;luarpy.github.io&amp;#x2F;styles.css&amp;quot;&amp;gt;
+    &amp;lt;&amp;#x2F;head&amp;gt;
+    &amp;lt;!--DOC BODY--&amp;gt;
+    &amp;lt;body class=&amp;quot;&amp;quot;&amp;gt;
+        &amp;lt;!--NAVIGATION BAR--&amp;gt;
+        &amp;lt;nav class=&amp;quot;menu&amp;quot;&amp;gt;
+            &amp;lt;div class=&amp;quot;nav-left&amp;quot;&amp;gt;
+                &amp;lt;ul&amp;gt;
+                    &amp;lt;li&amp;gt;    
+                        &amp;lt;a href=&amp;quot;https:&amp;#x2F;&amp;#x2F;luarpy.github.io&amp;#x2F;index.html&amp;quot;&amp;gt;
+                            &amp;lt;img class=&amp;quot;logo&amp;quot; src=&amp;quot;https:&amp;#x2F;&amp;#x2F;luarpy.github.io&amp;#x2F;favicon.jpg&amp;quot; &amp;gt;
+                            &amp;lt;span class=&amp;quot;sitename&amp;quot;&amp;gt;Luarpy&amp;#x27;s blog&amp;lt;&amp;#x2F;span&amp;gt;
+                        &amp;lt;&amp;#x2F;a&amp;gt;
+                    &amp;lt;&amp;#x2F;li&amp;gt;
+                &amp;lt;&amp;#x2F;ul&amp;gt;
+            &amp;lt;&amp;#x2F;div&amp;gt;
+            &amp;lt;div class=&amp;quot;nav-right&amp;quot;&amp;gt;
+                &amp;lt;ul&amp;gt;
+                    &amp;lt;li&amp;gt;
+                        &amp;lt;a href=&amp;quot;https:&amp;#x2F;&amp;#x2F;luarpy.github.io&amp;#x2F;arts&amp;#x2F;contact.html&amp;quot;&amp;gt;Contact&amp;lt;&amp;#x2F;a&amp;gt;
+                    &amp;lt;&amp;#x2F;li&amp;gt;
+                    &amp;lt;li&amp;gt;
+                        &amp;lt;a href=&amp;quot;https:&amp;#x2F;&amp;#x2F;github.com&amp;#x2F;luarpy&amp;quot;&amp;gt;Git&amp;lt;&amp;#x2F;a&amp;gt;
+                    &amp;lt;&amp;#x2F;li&amp;gt;
+                    &amp;lt;li&amp;gt;
+                        &amp;lt;button onclick=&amp;quot;setDarkMode()&amp;quot; class=&amp;quot;dark-mode-toggle-button&amp;quot;&amp;gt;☀&amp;lt;&amp;#x2F;button&amp;gt;
+                        &amp;lt;script type=&amp;quot;text&amp;#x2F;Javascript&amp;quot; src=&amp;quot;https:&amp;#x2F;&amp;#x2F;luarpy.github.io&amp;#x2F;toggle.js&amp;quot;&amp;gt;&amp;lt;&amp;#x2F;script&amp;gt;
+                    &amp;lt;&amp;#x2F;li&amp;gt;
+
+                &amp;lt;&amp;#x2F;ul&amp;gt;
+            &amp;lt;&amp;#x2F;div&amp;gt;
+        &amp;lt;&amp;#x2F;nav&amp;gt;
+        &amp;lt;noscript&amp;gt;This page uses a little bit of Javascript but it is not neccesary for normal usage&amp;lt;&amp;#x2F;noscript&amp;gt;
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;html&quot; class=&quot;language-html &quot;&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;    &amp;lt;&amp;#x2F;body&amp;gt;
+    &amp;lt;!--DOC FOOTER--&amp;gt;
+    &amp;lt;footer&amp;gt;
+        &amp;lt;p&amp;gt;Licensed under &amp;lt;a href=&amp;quot;https:&amp;#x2F;&amp;#x2F;creativecommons.org&amp;#x2F;licenses&amp;#x2F;by-nc&amp;#x2F;4.0&amp;#x2F;&amp;quot;&amp;gt;CC BY-NC 4.0&amp;lt;&amp;#x2F;a&amp;gt;&amp;lt;br&amp;gt;
+    Created with a &amp;lt;a href=&amp;quot;https:&amp;#x2F;&amp;#x2F;github.com&amp;#x2F;luarpy&amp;#x2F;ssg&amp;quot;&amp;gt;slightly modified&amp;lt;&amp;#x2F;a&amp;gt; version of &amp;lt;a href=&amp;quot;https:&amp;#x2F;&amp;#x2F;www.romanzolotarev.com&amp;#x2F;ssg.html&amp;quot;&amp;gt;ssg&amp;lt;&amp;#x2F;a&amp;gt; by Roman Zolotarev&amp;lt;&amp;#x2F;p&amp;gt;
+    &amp;lt;&amp;#x2F;footer&amp;gt;
+&amp;lt;&amp;#x2F;html&amp;gt;
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;No me voy a estirar viendo su contenido, pero para que se vea sencillo, en cada parte se puede ver como los tags de &lt;code&gt;&amp;lt;body&amp;gt;&lt;&#x2F;code&gt; y &lt;code&gt;&amp;lt;&#x2F;body&amp;gt;&lt;&#x2F;code&gt; han sido separados para poder encajarse en el resultado final de la siguiente manera:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;markdown&quot; class=&quot;language-markdown &quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&amp;lt;!--Esto es un ejemplo de formato markowd--&amp;gt;
+# Esto es un ejemplo de prueba
+Esto es texto de un ejemplo de prueba
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Su salida del programa será la siguiente:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;html&quot; class=&quot;language-html &quot;&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html&amp;gt;
+    &amp;lt;!--DOC HEADER--&amp;gt;
+    &amp;lt;head&amp;gt;
+      &amp;lt;title&amp;gt;&amp;lt;&amp;#x2F;title&amp;gt; &amp;lt;!--Here goes file&amp;#x27;s title after processing--
+      &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text&amp;#x2F;css&amp;quot; href=&amp;quot;https:&amp;#x2F;&amp;#x2F;luarpy.github.io&amp;#x2F;styles.css&amp;quot;&amp;gt;
+    &amp;lt;&amp;#x2F;head&amp;gt;
+    &amp;lt;!--DOC BODY--&amp;gt;
+    &amp;lt;body class=&amp;quot;&amp;quot;&amp;gt;
+        &amp;lt;!--NAVIGATION BAR--&amp;gt;
+        &amp;lt;nav class=&amp;quot;menu&amp;quot;&amp;gt;
+            &amp;lt;div class=&amp;quot;nav-left&amp;quot;&amp;gt;
+                &amp;lt;ul&amp;gt;
+                    &amp;lt;li&amp;gt;    
+                        &amp;lt;a href=&amp;quot;https:&amp;#x2F;&amp;#x2F;luarpy.github.io&amp;#x2F;index.html&amp;quot;&amp;gt;
+                            &amp;lt;img class=&amp;quot;logo&amp;quot; src=&amp;quot;https:&amp;#x2F;&amp;#x2F;luarpy.github.io&amp;#x2F;favicon.jpg&amp;quot; &amp;gt;
+                            &amp;lt;span class=&amp;quot;sitename&amp;quot;&amp;gt;Luarpy&amp;#x27;s blog&amp;lt;&amp;#x2F;span&amp;gt;
+                        &amp;lt;&amp;#x2F;a&amp;gt;
+                    &amp;lt;&amp;#x2F;li&amp;gt;
+                &amp;lt;&amp;#x2F;ul&amp;gt;
+            &amp;lt;&amp;#x2F;div&amp;gt;
+            &amp;lt;div class=&amp;quot;nav-right&amp;quot;&amp;gt;
+                &amp;lt;ul&amp;gt;
+                    &amp;lt;li&amp;gt;
+                        &amp;lt;a href=&amp;quot;https:&amp;#x2F;&amp;#x2F;luarpy.github.io&amp;#x2F;arts&amp;#x2F;contact.html&amp;quot;&amp;gt;Contact&amp;lt;&amp;#x2F;a&amp;gt;
+                    &amp;lt;&amp;#x2F;li&amp;gt;
+                    &amp;lt;li&amp;gt;
+                        &amp;lt;a href=&amp;quot;https:&amp;#x2F;&amp;#x2F;github.com&amp;#x2F;luarpy&amp;quot;&amp;gt;Git&amp;lt;&amp;#x2F;a&amp;gt;
+                    &amp;lt;&amp;#x2F;li&amp;gt;
+                    &amp;lt;li&amp;gt;
+                        &amp;lt;button onclick=&amp;quot;setDarkMode()&amp;quot; class=&amp;quot;dark-mode-toggle-button&amp;quot;&amp;gt;☀&amp;lt;&amp;#x2F;button&amp;gt;
+                        &amp;lt;script type=&amp;quot;text&amp;#x2F;Javascript&amp;quot; src=&amp;quot;https:&amp;#x2F;&amp;#x2F;luarpy.github.io&amp;#x2F;toggle.js&amp;quot;&amp;gt;&amp;lt;&amp;#x2F;script&amp;gt;
+                    &amp;lt;&amp;#x2F;li&amp;gt;
+
+                &amp;lt;&amp;#x2F;ul&amp;gt;
+            &amp;lt;&amp;#x2F;div&amp;gt;
+        &amp;lt;&amp;#x2F;nav&amp;gt;
+        &amp;lt;noscript&amp;gt;This page uses a little bit of Javascript but it is not neccesary for normal usage&amp;lt;&amp;#x2F;noscript&amp;gt;
+        &amp;lt;h1&amp;gt;Esto es un ejemplo de prueba&amp;lt;&amp;#x2F;h1&amp;gt;
+        &amp;lt;p&amp;gt;Esto es texto de un ejemplo de prueba&amp;lt;&amp;#x2F;p&amp;gt;
+    &amp;lt;&amp;#x2F;body&amp;gt;
+    &amp;lt;!--DOC FOOTER--&amp;gt;
+    &amp;lt;footer&amp;gt;
+        &amp;lt;p&amp;gt;Licensed under &amp;lt;a href=&amp;quot;https:&amp;#x2F;&amp;#x2F;creativecommons.org&amp;#x2F;licenses&amp;#x2F;by-nc&amp;#x2F;4.0&amp;#x2F;&amp;quot;&amp;gt;CC BY-NC 4.0&amp;lt;&amp;#x2F;a&amp;gt;&amp;lt;br&amp;gt;
+    Created with a &amp;lt;a href=&amp;quot;https:&amp;#x2F;&amp;#x2F;github.com&amp;#x2F;luarpy&amp;#x2F;ssg&amp;quot;&amp;gt;slightly modified&amp;lt;&amp;#x2F;a&amp;gt; version of &amp;lt;a href=&amp;quot;https:&amp;#x2F;&amp;#x2F;www.romanzolotarev.com&amp;#x2F;ssg.html&amp;quot;&amp;gt;ssg&amp;lt;&amp;#x2F;a&amp;gt; by Roman Zolotarev&amp;lt;&amp;#x2F;p&amp;gt;
+    &amp;lt;&amp;#x2F;footer&amp;gt;
+&amp;lt;&amp;#x2F;html&amp;gt;
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;El procesado de un formato a otro es muy sencillo, por lo que solo hace falta redactar los documentos en formato Markdown y editar las partes del documento de la cabecera que se quieran utilizar.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;cambios-que-contiene-mi-ssg&quot;&gt;Cambios que contiene mi ssg&lt;&#x2F;h2&gt;
+&lt;p&gt;En mi versión basada en la de Woflgang, cambié algunas partes del código que me facilitaban unas tareas o me quitaban otras.&lt;&#x2F;p&gt;
+&lt;p&gt;La primera y más sencilla, es hacer que añada una línea informativa para cuando el buscador tiene el Javascript desactivado. La segunda, un simple botón que se añade en la base del archivo sobre el tag &lt;code&gt;&amp;lt;&#x2F;body&amp;gt;&lt;&#x2F;code&gt; de éste. La tercera, una sencilla sustitución de la palabra clave &lt;code&gt;DOMAIN_NAME&lt;&#x2F;code&gt; por la del dominio que se desee.&lt;&#x2F;p&gt;
+&lt;p&gt;Estos cambios o sustituciones se hacen si se activan los flags de configuración que están en el archivo &lt;code&gt;src&#x2F;.config&lt;&#x2F;code&gt;. Las variables que se encuentran ahí se cargan al principio de la ejecución y sobrescriben los valores por defecto. que contienen.&lt;&#x2F;p&gt;
+&lt;p&gt;Este es un ejemplo de unas variables que funcionan en el programa:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;STYLESHEET=&amp;quot;style.css&amp;quot; # Documento como estilo
+SCRIPT=&amp;quot;toggle.js&amp;quot; # Documento con las funciones de Javascript
+NOSCRIPT=&amp;quot;Yes&amp;quot; # Activa el añadir la línea de noscrip
+BUTTON_TEXT=&amp;quot;Inicio&amp;quot; # Es el texto que se añade al botón que lleva a la página principal
+DOMAIN_NAME=&amp;quot;https:&amp;#x2F;&amp;#x2F;example.com&amp;quot; # URL del dominio
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;También le he añadido una función que incrusta un botón al final de cada página, menos la principal, que lleva a la página principal de la web. Así es más fácil moverse de un lado a otro.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;configuracion&quot;&gt;Configuración&lt;&#x2F;h3&gt;
+&lt;p&gt;Todos los documentos a los que se haga referencia deben tener la ruta relativa respecto la de origen, que es la &lt;code&gt;src&#x2F;&lt;&#x2F;code&gt;. Luego estos serán copiados al destino o carpeta de salida &lt;code&gt;dst&#x2F;&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;STYLESHEET&lt;&#x2F;strong&gt;: añade una línea en cada documento HTML que hace referencencia al  archivo que señale. Si no es un URL o enlace a otra plataforma, la línea que se genera hace referencia hacia el documento en la ruta relativa que los une. Es algo de ver, con un ejemplo más fácil:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;└── dst&amp;#x2F;
+ ├── arts&amp;#x2F;
+ │ └── generar_paginas_webs_con_ssg.html #&amp;lt;- &amp;#x27;..&amp;#x2F;style.css&amp;#x27;
+ ├── doc&amp;#x2F;
+ ├── img&amp;#x2F;
+ ├── index.html #&amp;lt;- &amp;#x27;style.css&amp;#x27;
+ ├── style.css
+ └── toggle.js
+&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;SCRIPT&lt;&#x2F;strong&gt;: añade una línea en cada documento HTML que hace referencencia al archivo que señale.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;NOSCRIPT&lt;&#x2F;strong&gt;: añade una línea en la que aparece el mensaje que se activa al ver que el Javascript está desactivado.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;BUTTON_TEXT&lt;&#x2F;strong&gt;: cambia el texto del botón que se añade a cada página al final de esta. Por defecto utiliza &quot;Main page&quot;  como opción.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;DOMAIN_NAME&lt;&#x2F;strong&gt;: si se ha añadido, sustituye el nombre que se ha añadido al ejecutar el script como 4º argumento de entrada.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;update&quot;&gt;Update&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;2025: éste método ya no lo utilizo. No es práctico dedicar tanto tiempo. Una solución intermédia es igual de útil.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+</feed>

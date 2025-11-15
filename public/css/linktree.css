@@ -1,0 +1,90 @@
+@import url(colors.css);
+
+* {
+  font-family: monospace;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border-color: var(--color-text);
+}
+
+html {
+  font-size: calc(1em + 0.33vw);
+}
+
+body{
+  max-width: 700px;
+  line-height: 1.5;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  max-width: 700px;
+  margin: auto;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header, footer {
+  display: none;
+}
+
+#linktree-content {
+  margin: 50px auto;
+  align-items: center;
+}
+
+#linktree-content > *{
+  text-align: center;
+}
+
+#linktree-content > a {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+#linktree-content > a:hover {
+  color: var(--color-text);
+}
+
+#image-container {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+}
+
+#image-container > #logo_img  {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+#user-name {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+}
+
+#link-container{
+  width: 100%;
+  max-width: 700px;
+}
+
+.rrss-link {
+  font-size: 2em;
+}
+
+.link {
+  background-color: var(--color-primary);
+  width: 100%;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.link:hover {
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.2s;
+  transition: scale(1.02);
+}

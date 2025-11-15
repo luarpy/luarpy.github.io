@@ -1,0 +1,14 @@
+
+ :root {
+    --dot-color: #000;       /* Color del punto */
+    --dot-size: 1px;         /* Tamaño del punto */
+    --dot-spacing: 24px;     /* Separación entre puntos */
+    --bg-color: #fff;        /* Color de fondo */
+  }
+
+body{
+    background-image: radial-gradient(circle, var(--dot-color) var(--dot-size), transparent var(--dot-size)) !important;
+    background-size: var(--dot-spacing) var(--dot-spacing) !important;
+}
+
+

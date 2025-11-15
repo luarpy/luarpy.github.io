@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Luarpy&#x27;s blog - software</title>
+    <link rel="self" type="application/atom+xml" href="https://luarpy.github.io/tags/software/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://luarpy.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-11-22T00:00:00+00:00</updated>
+    <id>https://luarpy.github.io/tags/software/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Fixing BenQ Monitor Delay</title>
+        <published>2023-11-22T00:00:00+00:00</published>
+        <updated>2023-11-22T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              luarpy
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://luarpy.github.io/blog/fix-benq2780q-delay/"/>
+        <id>https://luarpy.github.io/blog/fix-benq2780q-delay/</id>
+        
+        <summary type="html">&lt;p&gt;TL;DR:
+El modelo BenQ EX2780Q tiene un delay de frábrica en la salida del audio por altavoces; este script escrito en Bash emite un flujo de datos sin sonido para mantener activo el trigger de entrada del audio al monitor.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+</feed>
